@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: "{\"q\":\"simple_form*\"}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Phraseapp Ruby 1.0.3
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 5c957b9ecd8db363b378806d2062c6289df379d6e333f37386f680270b108cf1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 18 Jun 2015 14:40:21 GMT
+      Etag:
+      - W/"d751713988987e9331980363e24189ce"
+      Link:
+      - "<https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
+        rel=first, <https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=0&per_page=100>;
+        rel=last"
+      Server:
+      - Wunderscale - powered by dynport.de
+      Set-Cookie:
+      - language=en; path=/; expires=Mon, 18 Jun 2035 14:40:21 -0000; HttpOnly; secure
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Generated:
+      - '2015-06-18T14:40:21+00:00'
+      X-Server:
+      - ip-172-31-2-132
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Thu, 18 Jun 2015 14:40:20 GMT
+- request:
+    method: get
+    uri: https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: "{\"q\":\"name:key,first_fallback,second_fallback\"}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Phraseapp Ruby 1.0.3
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 5c957b9ecd8db363b378806d2062c6289df379d6e333f37386f680270b108cf1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 18 Jun 2015 14:40:21 GMT
+      Etag:
+      - W/"d751713988987e9331980363e24189ce"
+      Link:
+      - "<https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
+        rel=first, <https://api.phraseapp.com/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=0&per_page=100>;
+        rel=last"
+      Server:
+      - Wunderscale - powered by dynport.de
+      Set-Cookie:
+      - language=en; path=/; expires=Mon, 18 Jun 2035 14:40:21 -0000; HttpOnly; secure
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Generated:
+      - '2015-06-18T14:40:21+00:00'
+      X-Server:
+      - ip-172-31-10-171
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Thu, 18 Jun 2015 14:40:21 GMT
+recorded_with: VCR 2.9.3
