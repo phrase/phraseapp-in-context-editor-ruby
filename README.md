@@ -1,6 +1,6 @@
 # Phraseapp #
-[![Code Climate](https://codeclimate.com/github/phraseapp-ruby-in-context-editor/phrase.png)](https://codeclimate.com/github/phraseapp-ruby-in-context-editor/phrase)
-[![Build Status](https://secure.travis-ci.org/phraseapp-ruby-in-context-editor/phrase.png)](http://travis-ci.org/phraseapp-ruby-in-context-editor/phrase)
+[![Code Climate](https://codeclimate.com/github/phrase/phraseapp-ruby-in-context-editor.png)](https://codeclimate.com/github/phrase/phraseapp-ruby-in-context-editor)
+[![Build Status](https://secure.travis-ci.org/phrase/phraseapp-ruby-in-context-editor.png)](http://travis-ci.org/phrase/phraseapp-ruby-in-context-editor)
 
 Phraseapp is a translation management software. Set up a professional translation process to boost the quality of your translations with our powerful In-Context Editor or simply share and edit locale files with your team.
 
@@ -32,6 +32,15 @@ That's it!
 Install phraseapp-ruby-in-context-editor by executing the Rails generator:
 
 	bundle exec rails generate phraseapp-ruby-in-context-editor:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
+
+  access-token:
+
+  OAuth access-tokens can be limited to specific scopes, and can be revoked by users at any time. You can create and manage OAuth access-tokens in your [profile settings](https://phraseapp.com/me/oauth_access_tokens) in Translation Center or via the [Authorizations API](http://docs.phraseapp.com/api/v2/authorizations).
+
+  project-id:
+
+  The project id can be found in your projects settings in the Translation Center. 
+  https://phraseapp.com/<YOUR-PROJECT-NAME>/edit
 	
 This will:
 
