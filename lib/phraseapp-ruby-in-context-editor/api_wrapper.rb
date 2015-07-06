@@ -11,7 +11,7 @@ class InContextEditor::ApiWrapper
   end
 
   def default_translation(key)
-    params = PhraseApp::TranslationsByKeyParams.new
+    params = PhraseApp::RequestParams::TranslationsByKeyParams.new
     translations = InContextEditor::ApiCollection.new(@api_client, "translations_by_key", project_and_key_id(key), params).collection
     return unless translations.present?
 
@@ -19,13 +19,13 @@ class InContextEditor::ApiWrapper
   end
 
   def keys_with_prefix(prefix)
-    params = PhraseApp::KeysListParams.new(q:"#{prefix}*")
+    params = PhraseApp::RequestParams::KeysListParams.new(q:"#{prefix}*")
     keys_list(params)
   end
 
   def keys_by_names(names)
     names = names.join(',')
-    params = PhraseApp::KeysListParams.new(:q => "name:#{names}")
+    params = PhraseApp::RequestParams::KeysListParams.new(:q => "name:#{names}")
     keys_list(params)
   end
 

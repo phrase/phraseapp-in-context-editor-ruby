@@ -57,8 +57,3 @@ This will:
 * [Phraseapp API Documentation](http://docs.phraseapp.com/api/v2/)
 * [Demo of the In-Context Editor](http://demo.phraseapp.com)
 * [Localization Guides and Software Translation Best Practices](http://localize-software.phraseapp.com/)
-
-## Partner-Integrations
-* [Integrate Phraseapp with Ruby Motion](https://github.com/phrase/motion-phrase)
-* [Integrate Phraseapp as a Heroku Add-on](https://addons.heroku.com/phrase)
-* [Integrate Phraseapp as a Cloudcontrol Add-on](https://phraseapp.com/docs/cloudcontrol/introduction)
