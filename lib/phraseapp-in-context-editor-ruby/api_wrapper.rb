@@ -1,4 +1,4 @@
-require 'phraseapp-ruby-in-context-editor/api_collection'
+require 'phraseapp-in-context-editor-ruby/api_collection'
 
 class InContextEditor::ApiWrapper
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor/hash_flattener'
+require 'phraseapp-in-context-editor-ruby/hash_flattener'
 
 describe InContextEditor::HashFlattener do
   describe "#flatten(hash, escape, previous_key=nil, &block)" do

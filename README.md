@@ -1,6 +1,6 @@
 # Phraseapp #
-[![Code Climate](https://codeclimate.com/github/phrase/phraseapp-ruby-in-context-editor.png)](https://codeclimate.com/github/phrase/phraseapp-ruby-in-context-editor)
-[![Build Status](https://secure.travis-ci.org/phrase/phraseapp-ruby-in-context-editor.png)](http://travis-ci.org/phrase/phraseapp-ruby-in-context-editor)
+[![Code Climate](https://codeclimate.com/github/phrase/phraseapp-in-context-editor-ruby.png)](https://codeclimate.com/github/phrase/phraseapp-in-context-editor-ruby)
+[![Build Status](https://secure.travis-ci.org/phrase/phraseapp-in-context-editor-ruby.png)](http://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
 Phraseapp is a translation management software. Set up a professional translation process to boost the quality of your translations with our powerful In-Context Editor or simply share and edit locale files with your team.
 
@@ -15,11 +15,11 @@ Phraseapp comes with an In-Context editor that allows you to translate directly 
 
 Install the gem via `gem install`
 
-	gem install phraseapp-phraseapp-ruby-in-context-editor
+	gem install phraseapp-in-context-editor-ruby
 	
 or add it to your `Gemfile` when using bundler:
 
-	gem 'phraseapp-phraseapp-ruby-in-context-editor'
+	gem 'phraseapp-in-context-editor-ruby'
 
 and install it	
 
@@ -29,9 +29,9 @@ That's it!
 
 ### Initialization
 
-Install phraseapp-ruby-in-context-editor by executing the Rails generator:
+Install phraseapp-in-context-editor-ruby by executing the Rails generator:
 
-	bundle exec rails generate phraseapp-ruby-in-context-editor:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
+	bundle exec rails generate phraseapp-in-context-editor-ruby:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
 
   access-token:
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor'
-require 'phraseapp-ruby-in-context-editor/delegate/i18n'
+require 'phraseapp-in-context-editor-ruby'
+require 'phraseapp-in-context-editor-ruby/delegate/i18n'
 
 describe InContextEditor::Delegate::I18n do
   let(:key) { "foo.bar" }

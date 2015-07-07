@@ -3,7 +3,7 @@ require 'rainbow'
 require 'phraseapp-ruby'
 
 module InContextEditor
-  autoload :Config, 'phraseapp-ruby-in-context-editor/config'
+  autoload :Config, 'phraseapp-in-context-editor-ruby/config'
 
   class << self
 
@@ -76,17 +76,17 @@ module InContextEditor
     yield(self.config)
   end
 
-  autoload :ViewHelpers, 'phraseapp-ruby-in-context-editor/view_helpers'
+  autoload :ViewHelpers, 'phraseapp-in-context-editor-ruby/view_helpers'
 
-  require 'phraseapp-ruby-in-context-editor/version'
-  require 'phraseapp-ruby-in-context-editor/engine'
-  require 'phraseapp-ruby-in-context-editor/delegate'
-  require 'phraseapp-ruby-in-context-editor/backend_service'
-  require 'phraseapp-ruby-in-context-editor/view_helpers'
+  require 'phraseapp-in-context-editor-ruby/version'
+  require 'phraseapp-in-context-editor-ruby/engine'
+  require 'phraseapp-in-context-editor-ruby/delegate'
+  require 'phraseapp-in-context-editor-ruby/backend_service'
+  require 'phraseapp-in-context-editor-ruby/view_helpers'
 end
 
 # Only load adapters directly if non-rails app, otherwise use engine
 unless defined? Rails
-  require 'phraseapp-ruby-in-context-editor/adapters/i18n'
-  require 'phraseapp-ruby-in-context-editor/adapters/fast_gettext'
+  require 'phraseapp-in-context-editor-ruby/adapters/i18n'
+  require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
 end

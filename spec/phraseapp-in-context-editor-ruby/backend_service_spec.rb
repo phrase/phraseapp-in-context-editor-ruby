@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor'
-require 'phraseapp-ruby-in-context-editor/adapters/i18n'
-require 'phraseapp-ruby-in-context-editor/backend_service'
+require 'phraseapp-in-context-editor-ruby'
+require 'phraseapp-in-context-editor-ruby/adapters/i18n'
+require 'phraseapp-in-context-editor-ruby/backend_service'
 
 describe InContextEditor::BackendService do
   let(:phrase_service){ InContextEditor::BackendService.new }

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require 'phraseapp-ruby-in-context-editor'
-require 'phraseapp-ruby-in-context-editor/delegate'
-require 'phraseapp-ruby-in-context-editor/adapters/fast_gettext'
+require 'phraseapp-in-context-editor-ruby'
+require 'phraseapp-in-context-editor-ruby/delegate'
+require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
 
 describe InContextEditor::Delegate::FastGettext do
   before(:each) do

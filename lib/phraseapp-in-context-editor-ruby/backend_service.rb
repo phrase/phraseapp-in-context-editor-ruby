@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-require 'phraseapp-ruby-in-context-editor/api_collection'
-require 'phraseapp-ruby-in-context-editor/delegate/i18n'
+require 'phraseapp-in-context-editor-ruby/api_collection'
+require 'phraseapp-in-context-editor-ruby/delegate/i18n'
 
 class InContextEditor::BackendService
 

@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 
-require 'phraseapp-ruby-in-context-editor/cache'
-require 'phraseapp-ruby-in-context-editor/hash_flattener'
-require 'phraseapp-ruby-in-context-editor/delegate'
-require 'phraseapp-ruby-in-context-editor/api_wrapper'
+require 'phraseapp-in-context-editor-ruby/cache'
+require 'phraseapp-in-context-editor-ruby/hash_flattener'
+require 'phraseapp-in-context-editor-ruby/delegate'
+require 'phraseapp-in-context-editor-ruby/api_wrapper'
 require 'set'
 
 class InContextEditor::Delegate::I18n < InContextEditor::Delegate::Base

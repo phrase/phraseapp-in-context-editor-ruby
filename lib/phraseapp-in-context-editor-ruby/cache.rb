@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-require 'phraseapp-ruby-in-context-editor'
+require 'phraseapp-in-context-editor-ruby'
 
 class InContextEditor::Cache
 

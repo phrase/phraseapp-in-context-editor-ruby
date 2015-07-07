@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor'
-require 'phraseapp-ruby-in-context-editor/view_helpers'
+require 'phraseapp-in-context-editor-ruby'
+require 'phraseapp-in-context-editor-ruby/view_helpers'
 
 describe InContextEditor::ViewHelpers do
   before(:all) do

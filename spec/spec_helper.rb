@@ -8,7 +8,7 @@ require 'webmock/rspec'
 require 'rails/engine'
 require 'rails/generators'
 
-require 'phraseapp-ruby-in-context-editor'
+require 'phraseapp-in-context-editor-ruby'
 
 RSpec.configure do |config|
   config.filter_run :focus => true
@@ -70,7 +70,7 @@ module RSpec
     end
 
     def lib
-      File.expand_path('../../../phraseapp-ruby-in-context-editor/lib', __FILE__)
+      File.expand_path('../../../phraseapp-in-context-editor-ruby/lib', __FILE__)
     end
 
     def bundle(cmd, options = {})

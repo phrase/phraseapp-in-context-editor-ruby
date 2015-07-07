@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-require 'phraseapp-ruby-in-context-editor/delegate'
+require 'phraseapp-in-context-editor-ruby/delegate'
 
 class InContextEditor::Delegate::FastGettext < InContextEditor::Delegate::Base
   def initialize(method, *args)

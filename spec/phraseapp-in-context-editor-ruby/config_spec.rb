@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor/config'
+require 'phraseapp-in-context-editor-ruby/config'
 
 describe InContextEditor::Config do
   subject {

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'phraseapp-ruby-in-context-editor/cache'
+require 'phraseapp-in-context-editor-ruby/cache'
 
 describe InContextEditor::Cache do
   let(:cache) { InContextEditor::Cache.new }

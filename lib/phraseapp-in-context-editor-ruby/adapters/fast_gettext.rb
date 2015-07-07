@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-require 'phraseapp-ruby-in-context-editor/delegate/fast_gettext'
+require 'phraseapp-in-context-editor-ruby/delegate/fast_gettext'
 
 module FastGettext
   module Translation
