@@ -4,18 +4,18 @@ require 'phraseapp-in-context-editor-ruby'
 require 'phraseapp-in-context-editor-ruby/delegate'
 require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
 
-describe InContextEditor::Delegate::FastGettext do
+describe PhraseApp::InContextEditor::Delegate::FastGettext do
   before(:each) do
-    InContextEditor::Delegate::FastGettext.stub(:log)
+    PhraseApp::InContextEditor::Delegate::FastGettext.stub(:log)
   end
 
   describe "#to_s" do
     before(:each) do
-      InContextEditor.config.prefix = "{{__"
-      InContextEditor.config.suffix = "__}}"
+      PhraseApp::InContextEditor.config.prefix = "{{__"
+      PhraseApp::InContextEditor.config.suffix = "__}}"
     end
 
-    subject { InContextEditor::Delegate::FastGettext.new(method, *args).to_s }
+    subject { PhraseApp::InContextEditor::Delegate::FastGettext.new(method, *args).to_s }
 
     context "_" do
       let(:method) { :_ }
@@ -40,7 +40,7 @@ describe InContextEditor::Delegate::FastGettext do
   end
 
   describe "#params_from_args(method, args)" do
-    let(:delegate) { InContextEditor::Delegate::FastGettext.new(method, *args) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::FastGettext.new(method, *args) }
     subject { delegate.send(:params_from_args, args) }
 
     context "_" do
@@ -69,7 +69,7 @@ describe InContextEditor::Delegate::FastGettext do
       let(:args) { [] }
 
       it { should == {} }
-      specify { InContextEditor::Delegate::FastGettext.should_receive(:log).with(/unsupported/i); subject; }
+      specify { PhraseApp::InContextEditor::Delegate::FastGettext.should_receive(:log).with(/unsupported/i); subject; }
     end
   end
 end

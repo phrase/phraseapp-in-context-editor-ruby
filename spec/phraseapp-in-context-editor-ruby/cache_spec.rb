@@ -1,20 +1,20 @@
 require 'spec_helper'
 require 'phraseapp-in-context-editor-ruby/cache'
 
-describe InContextEditor::Cache do
-  let(:cache) { InContextEditor::Cache.new }
+describe PhraseApp::InContextEditor::Cache do
+  let(:cache) { PhraseApp::InContextEditor::Cache.new }
   let(:now) { Time.parse("2012-01-01 12:00:00") }
   let(:ten_minutes_ago) { Time.parse("2012-01-01 11:50:00") }
   let(:cache_key) { :foo }
 
   before(:each) do
-    InContextEditor.stub(:cache_lifetime).and_return(300)
+    PhraseApp::InContextEditor.stub(:cache_lifetime).and_return(300)
   end
 
   subject { cache }
 
   describe "#initialize" do
-    subject { InContextEditor::Cache.new(lifetime: 999) }
+    subject { PhraseApp::InContextEditor::Cache.new(lifetime: 999) }
 
     it { subject.lifetime.should == 999 }
   end
@@ -31,7 +31,7 @@ describe InContextEditor::Cache do
     context "entry for that cache_key exists" do
       before(:each) do
         Timecop.freeze(now) do
-          cache.set(cache_key, stub)
+          cache.set(cache_key, double)
         end
       end
 

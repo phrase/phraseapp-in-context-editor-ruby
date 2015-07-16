@@ -1,5 +1,5 @@
 require "spec_helper"
-require "generators/phraseapp-in-context-editor-ruby/install_generator"
+require "generators/phraseapp_in_context_editor/install_generator"
 
-describe InContextEditor::Generators::InstallGenerator do
+describe PhraseappInContextEditor::Generators::InstallGenerator do
 end

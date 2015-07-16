@@ -1,22 +1,20 @@
 require 'spec_helper'
 require 'phraseapp-in-context-editor-ruby/config'
 
-describe InContextEditor::Config do
-  subject {
-    InContextEditor::Config.new
-  }
+describe PhraseApp::InContextEditor::Config do
+  subject { PhraseApp::InContextEditor::Config.new }
 
   after(:each) do
-    InContextEditor::Config.class_variable_set(:@@auth_token, nil)
-    InContextEditor::Config.class_variable_set(:@@enabled, false)
-    InContextEditor::Config.class_variable_set(:@@backend, InContextEditor::BackendService.new)
-    InContextEditor::Config.class_variable_set(:@@prefix, "{{__")
-    InContextEditor::Config.class_variable_set(:@@suffix, "__}}")
+    PhraseApp::InContextEditor::Config.class_variable_set(:@@auth_token, nil)
+    PhraseApp::InContextEditor::Config.class_variable_set(:@@enabled, false)
+    PhraseApp::InContextEditor::Config.class_variable_set(:@@backend, PhraseApp::InContextEditor::BackendService.new)
+    PhraseApp::InContextEditor::Config.class_variable_set(:@@prefix, "{{__")
+    PhraseApp::InContextEditor::Config.class_variable_set(:@@suffix, "__}}")
   end
 
   describe "#enabled" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@enabled, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@enabled, nil)
     end
 
     context "has been set" do
@@ -36,7 +34,7 @@ describe InContextEditor::Config do
   describe "#enabled=" do
     it "should set the enabled state" do
       subject.enabled = "maybe"
-      InContextEditor::Config.class_variable_get(:@@enabled).should == "maybe"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@enabled).should == "maybe"
     end
 
     it "should be able to set enabled to false" do
@@ -47,7 +45,7 @@ describe InContextEditor::Config do
 
   describe "#backend" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@backend, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@backend, nil)
     end
 
     context "has been set" do
@@ -59,7 +57,7 @@ describe InContextEditor::Config do
 
     context "has not been set" do
       it "should return an instance of PhraseService by default" do
-        subject.backend.should be_a InContextEditor::BackendService
+        subject.backend.should be_a PhraseApp::InContextEditor::BackendService
       end
     end
   end
@@ -67,13 +65,13 @@ describe InContextEditor::Config do
   describe "#backend=" do
     it "should set the backend" do
       subject.backend = "MyBackend"
-      InContextEditor::Config.class_variable_get(:@@backend).should == "MyBackend"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@backend).should == "MyBackend"
     end
   end
 
   describe "#prefix" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@prefix, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@prefix, nil)
     end
 
     context "has been set" do
@@ -93,13 +91,13 @@ describe InContextEditor::Config do
   describe "#prefix=" do
     it "should set the prefix" do
       subject.prefix = "%%"
-      InContextEditor::Config.class_variable_get(:@@prefix).should == "%%"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@prefix).should == "%%"
     end
   end
 
   describe "#suffix" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@suffix, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@suffix, nil)
     end
 
     context "has been set" do
@@ -119,13 +117,13 @@ describe InContextEditor::Config do
   describe "#suffix=" do
     it "should set the suffix" do
       subject.suffix = "%%"
-      InContextEditor::Config.class_variable_get(:@@suffix).should == "%%"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@suffix).should == "%%"
     end
   end
 
   describe "#js_host" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@js_host, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@js_host, nil)
     end
 
     context "has been set" do
@@ -145,13 +143,13 @@ describe InContextEditor::Config do
   describe "#js_host=" do
     it "should set the js_host" do
       subject.js_host = "localhost"
-      InContextEditor::Config.class_variable_get(:@@js_host).should == "localhost"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@js_host).should == "localhost"
     end
   end
 
   describe "#js_use_ssl" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@js_use_ssl, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@js_use_ssl, nil)
     end
 
     context "has been set" do
@@ -171,13 +169,13 @@ describe InContextEditor::Config do
   describe "#js_use_ssl=" do
     it "should set js_use_ssl" do
       subject.js_use_ssl = "maybe"
-      InContextEditor::Config.class_variable_get(:@@js_use_ssl).should == "maybe"
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@js_use_ssl).should == "maybe"
     end
   end
 
   describe "#cache_key_segments_initial" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@cache_key_segments_initial, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@cache_key_segments_initial, nil)
     end
 
     context "has been set" do
@@ -197,13 +195,13 @@ describe InContextEditor::Config do
   describe "#cache_key_segments=" do
     it "should set the cache_key_segments_initial" do
       subject.cache_key_segments_initial = ["foo"]
-      InContextEditor::Config.class_variable_get(:@@cache_key_segments_initial).should == ["foo"]
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@cache_key_segments_initial).should == ["foo"]
     end
   end
 
   describe "#cache_lifetime" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@cache_lifetime, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@cache_lifetime, nil)
     end
 
     context "has been set" do
@@ -223,13 +221,13 @@ describe InContextEditor::Config do
   describe "#cache_lifetime=" do
     it "should set the cache_lifetime" do
       subject.cache_lifetime = 77
-      InContextEditor::Config.class_variable_get(:@@cache_lifetime).should == 77
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@cache_lifetime).should == 77
     end
   end
 
   describe "#ignored_keys" do
     before(:each) do
-      InContextEditor::Config.class_variable_set(:@@ignored_keys, nil)
+      PhraseApp::InContextEditor::Config.class_variable_set(:@@ignored_keys, nil)
     end
 
     context "has been set" do
@@ -247,7 +245,7 @@ describe InContextEditor::Config do
   describe "#ignored_keys=" do
     it "should set the list of ignored_keys" do
       subject.ignored_keys = ["foo"]
-      InContextEditor::Config.class_variable_get(:@@ignored_keys).should == ["foo"]
+      PhraseApp::InContextEditor::Config.class_variable_get(:@@ignored_keys).should == ["foo"]
     end
   end
 end

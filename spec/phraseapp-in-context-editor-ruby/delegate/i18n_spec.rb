@@ -2,11 +2,11 @@ require 'spec_helper'
 require 'phraseapp-in-context-editor-ruby'
 require 'phraseapp-in-context-editor-ruby/delegate/i18n'
 
-describe InContextEditor::Delegate::I18n do
+describe PhraseApp::InContextEditor::Delegate::I18n do
   let(:key) { "foo.bar" }
   let(:options) { {} }
   let(:original_args) { stub }
-  let(:delegate) { InContextEditor::Delegate::I18n.new(key) }
+  let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
 
   subject { delegate }
 
@@ -58,12 +58,12 @@ describe InContextEditor::Delegate::I18n do
   end
 
   describe "missing methods" do
-    let(:delegate) { InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
     let(:i18n_translation) { [] }
 
     before(:each) do
-      InContextEditor::Delegate::Base.stub(:log)
-      I18n.stub(:translate_without_phrase).and_return("i18n_translation")
+      PhraseApp::InContextEditor::Delegate::Base.stub(:log)
+      I18n.stub(:translate_without_phraseapp).and_return("i18n_translation")
     end
 
     context "translation is a string", vcr: {cassette_name: "translation is a string", record: :new_episodes, match_requests_on: [:method, :uri, :body]} do
@@ -140,7 +140,7 @@ describe InContextEditor::Delegate::I18n do
     before(:each) do
       subject.key = "foo.main"
       subject.fallback_keys = ["foo.fallback1", "foo.fallback2"]
-      subject.stub(:find_keys_within_phrase).and_return(keys)
+      subject.stub(:find_keys_within_phraseapp).and_return(keys)
     end
 
     context "standard key can be found via phrase service" do
@@ -178,14 +178,14 @@ describe InContextEditor::Delegate::I18n do
     end
   end
 
-  describe "#find_keys_within_phrase(key_names)" do
+  describe "#find_keys_within_phraseapp(key_names)" do
     let(:key_names) { ["foo", "bar", "baz"] }
     let(:keys_from_api) { [] }
     let(:pre_cached) { [] }
     let(:pre_fetched) { [] }
-    let(:delegate) { InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
 
-    subject { delegate.send(:find_keys_within_phrase, key_names) }
+    subject { delegate.send(:find_keys_within_phraseapp, key_names) }
 
     before(:each) do
       delegate.stub(key_names_returned_from_api_for: keys_from_api)
@@ -233,11 +233,11 @@ describe InContextEditor::Delegate::I18n do
   describe "#covered_by_initital_caching?(key_name)" do
     let(:key_name_to_fetch) { "simple.form" }
 
-    subject { InContextEditor::Delegate::I18n.new(key).send(:covered_by_initial_caching?, key_name_to_fetch) }
+    subject { PhraseApp::InContextEditor::Delegate::I18n.new(key).send(:covered_by_initial_caching?, key_name_to_fetch) }
 
     context "key starts with expression found in InContextEditor.cache_key_segments_initial" do
       before(:each) do
-        InContextEditor.config.cache_key_segments_initial = ["simple", "bar"]
+        PhraseApp::InContextEditor.config.cache_key_segments_initial = ["simple", "bar"]
       end
 
       it { should be_truthy }
@@ -251,7 +251,7 @@ describe InContextEditor::Delegate::I18n do
 
     context "key does not start with expression found in InContextEditor.cache_key_segments_initial" do
       before(:each) do
-        InContextEditor.config.cache_key_segments_initial = ["nope"]
+        PhraseApp::InContextEditor.config.cache_key_segments_initial = ["nope"]
       end
 
       it { should be_falsey }
@@ -353,12 +353,12 @@ describe InContextEditor::Delegate::I18n do
 
   describe "#decorated_key_name" do
     it "should include the phrase prefix" do
-      InContextEditor.stub(:prefix).and_return("??")
+      PhraseApp::InContextEditor.stub(:prefix).and_return("??")
       subject.send(:decorated_key_name).start_with?("??").should be_truthy
     end
 
     it "should include the phrase suffix" do
-      InContextEditor.stub(:suffix).and_return("!!")
+      PhraseApp::InContextEditor.stub(:suffix).and_return("!!")
       subject.send(:decorated_key_name).end_with?("!!").should be_truthy
     end
 
@@ -369,7 +369,7 @@ describe InContextEditor::Delegate::I18n do
   end
 
   describe "#warm_translation_key_names_cache" do
-    let(:delegate) { InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
     subject { delegate.send(:cache).get(:translation_key_names) }
 
     before(:each) do
@@ -383,18 +383,18 @@ describe InContextEditor::Delegate::I18n do
   end
 
   describe "#prefetched_key_names" do
-    let(:delegate) { InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
 
     subject { delegate.send(:prefetched_key_names) }
 
     before(:each) do
-      InContextEditor.config.cache_key_segments_initial = initial_segments
+      PhraseApp::InContextEditor.config.cache_key_segments_initial = initial_segments
     end
 
     context "api returned a string" do
       let(:initial_segments) { ["foo"] }
 
-      it do 
+      it do
         VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
           should include("foo")
         end
@@ -406,7 +406,7 @@ describe InContextEditor::Delegate::I18n do
       let(:initial_segments) { ["bar"] }
 
       it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do 
+        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
           should include("bar.foo")
         end
       end
@@ -417,13 +417,13 @@ describe InContextEditor::Delegate::I18n do
       let(:initial_segments) { ["nested"] }
 
       it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do 
+        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
           should include("nested.bar.baz")
         end
       end
 
       it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do 
+        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
           should include("nested.bar.def")
         end
       end
