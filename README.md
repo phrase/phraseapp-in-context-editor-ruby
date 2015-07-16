@@ -1,6 +1,6 @@
 # PhraseApp In-Context-Editor #
 
-[![Build Status](https://secure.travis-ci.org/phrase/phraseapp-in-context-editor-ruby.png)](http://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
+[![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
 PhraseApp is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
 
