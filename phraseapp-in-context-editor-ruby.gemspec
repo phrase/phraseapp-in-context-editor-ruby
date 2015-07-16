@@ -11,7 +11,8 @@ Gem::Specification.new do |s|
   s.authors = ["Dynport GmbH"]
   s.email = ["info@phraseapp.com"]
   s.homepage = "https://phraseapp.com"
-  s.summary = %q{The best way to manage i18n.}
+  s.summary = %q{Translation management solution for web and mobile applications}
+  s.licenses = ['MIT']
   s.description = %q{PhraseApp In-Context-Editor allows you to edit translations directly on the website. More information: phraseapp.com}
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project = "phraseapp-in-context-editor-ruby"
@@ -19,14 +20,12 @@ Gem::Specification.new do |s|
   s.files = git_files
   s.test_files = s.files.grep(%r{^(spec)/})
   s.require_paths = ["lib"]
-  s.add_dependency('json')
-  s.add_dependency('i18n')
-  s.add_dependency('phraseapp-ruby')
-  s.add_development_dependency('rake')
-  s.add_development_dependency('rspec')
-  s.add_development_dependency('webmock')
-  s.add_development_dependency('vcr')
-  s.add_development_dependency('timecop')
-  s.add_development_dependency('genspec')
-  s.add_development_dependency('rails')
+  s.add_dependency('json', '~> 1.8')
+  s.add_dependency('i18n', '~> 0.7')
+  s.add_dependency('phraseapp-ruby', '~> 1.0')
+  s.add_development_dependency('rspec', '~> 3.2')
+  s.add_development_dependency('webmock', '~> 1.21')
+  s.add_development_dependency('vcr', '~> 2.9')
+  s.add_development_dependency('timecop', '~> 0.7')
+  s.add_development_dependency('rails', '~> 4.2')
 end
