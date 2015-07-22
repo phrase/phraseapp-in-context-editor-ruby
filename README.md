@@ -36,7 +36,7 @@ Next, create the initializer file by executing the Rails generator:
 
 ##### --access-token
 
-You can create and manage access tokens in your [profile settings](https://phraseapp.com/profile/oauth_access_tokens) or via the [Authorizations API](http://docs.phraseapp.com/api/v2/authorizations).
+You can create and manage access tokens in your [profile settings](https://phraseapp.com/settings/oauth_access_tokens) or via the [Authorizations API](http://docs.phraseapp.com/api/v2/authorizations).
 
 ##### --project-id
 
