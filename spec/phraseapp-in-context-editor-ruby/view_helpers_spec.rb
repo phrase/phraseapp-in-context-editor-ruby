@@ -37,6 +37,11 @@ describe PhraseApp::InContextEditor::ViewHelpers do
         helpers.phraseapp_in_context_editor_js.should include("http")
         helpers.phraseapp_in_context_editor_js.should_not include("https")
       end
+
+      it "should use api_host when configured" do
+        PhraseApp::InContextEditor.config.api_host = "http://localhost:3000"
+        helpers.phraseapp_in_context_editor_js.should include("apiBaseUrl: 'http://localhost:3000/api/v2'")
+      end
     end
 
     context "phrase is disabled" do

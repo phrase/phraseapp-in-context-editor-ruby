@@ -4,10 +4,15 @@ module PhraseApp
       def phraseapp_in_context_editor_js
         return "" unless PhraseApp::InContextEditor.enabled?
 
+        js_config = ["projectId: '#{PhraseApp::InContextEditor.project_id}'"]
+        if PhraseApp::InContextEditor.api_host.present?
+          js_config << "apiBaseUrl: '#{PhraseApp::InContextEditor.api_host}/api/v2'"
+        end
+
         js = <<-eos
                 <script>
                   window.PHRASEAPP_CONFIG = {
-                        projectId: '#{PhraseApp::InContextEditor.project_id}'
+                        #{js_config.join(', ')}
                       };
                   (function() {
                     var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;

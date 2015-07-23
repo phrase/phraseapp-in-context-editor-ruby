@@ -66,6 +66,10 @@ module PhraseApp
         config.js_host
       end
 
+      def api_host
+        config.api_host
+      end
+
       def api_client
         config.api_client
       end
