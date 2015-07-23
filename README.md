@@ -1,6 +1,6 @@
-# PhraseApp In-Context-Editor #
+# PhraseApp In-Context-Editor for Ruby #
 
-*This Ruby gem is for use with Ruby/Rails applications only. Check out the [documentation](http://docs.phraseapp.com/guides/in-context-editor/) to learn how to set up the In-Context-Editor with other technologies.*
+*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](http://docs.phraseapp.com/guides/in-context-editor/) to learn how to set up the In-Context-Editor with other technologies.*
 
 [![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
@@ -32,7 +32,7 @@ and install it:
 
 Next, create the initializer file by executing the Rails generator:
 
-    $ bundle exec rails generate phraseapp-in-context-editor-ruby:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
+    $ bundle exec rails generate phraseapp_in_context_editor:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
 
 ##### --access-token
 
