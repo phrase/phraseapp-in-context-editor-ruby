@@ -34,6 +34,10 @@ module PhraseApp
         config.access_token
       end
 
+      def skip_ssl_verification
+        config.skip_ssl_verification
+      end
+
       def cache_key_segments_initial
         config.cache_key_segments_initial
       end

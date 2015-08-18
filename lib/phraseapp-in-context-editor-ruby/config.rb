@@ -30,6 +30,15 @@ module PhraseApp
         @@enabled = enabled
       end
 
+      def skip_ssl_verification
+        @@skip_ssl_verification = false if !defined? @@skip_ssl_verification or @@skip_ssl_verification.nil?
+        @@skip_ssl_verification
+      end
+
+      def skip_ssl_verification=(skip_ssl_verification)
+        @@skip_ssl_verification = skip_ssl_verification
+      end
+
       def backend
         @@backend ||= PhraseApp::InContextEditor::BackendService.new
       end
@@ -110,7 +119,7 @@ module PhraseApp
 
     protected
       def authorized_api_client
-        auth_handler = PhraseApp::Auth::AuthHandler.new(token: PhraseApp::InContextEditor.access_token, host: api_host)
+        auth_handler = PhraseApp::Auth::AuthHandler.new(token: PhraseApp::InContextEditor.access_token, host: api_host, skip_ssl_verification: PhraseApp::InContextEditor.skip_ssl_verification)
         PhraseApp::Auth.register_auth_handler(auth_handler)
         PhraseApp::Client
       end
