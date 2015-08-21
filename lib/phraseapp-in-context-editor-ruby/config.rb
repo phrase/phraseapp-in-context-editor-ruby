@@ -68,7 +68,7 @@ module PhraseApp
       end
 
       def api_host
-        @@api_host = nil if !defined? @@api_host or @@api_host.nil?
+        @@api_host = "https://api.phraseapp.com" if !defined? @@api_host or @@api_host.nil?
         @@api_host
       end
 
@@ -119,9 +119,8 @@ module PhraseApp
 
     protected
       def authorized_api_client
-        auth_handler = PhraseApp::Auth::AuthHandler.new(token: PhraseApp::InContextEditor.access_token, host: api_host, skip_ssl_verification: PhraseApp::InContextEditor.skip_ssl_verification)
-        PhraseApp::Auth.register_auth_handler(auth_handler)
-        PhraseApp::Client
+        credentials = PhraseApp::Auth::Credentials.new(token: PhraseApp::InContextEditor.access_token, host: PhraseApp::InContextEditor.api_host, skip_ssl_verification: PhraseApp::InContextEditor.skip_ssl_verification)
+        client = PhraseApp::Client.new(credentials)
       end
     end
   end

@@ -35,7 +35,7 @@ module PhraseApp
       end
 
       def blacklisted_keys
-        PhraseApp::InContextEditor::ApiCollection.new(@api_client, "exclude_rules_index", project_id).collection.map{ |rule| rule.name }
+        PhraseApp::InContextEditor::ApiCollection.new(@api_client, "blacklisted_keys_list", project_id).collection.map{ |rule| rule.name }
       end
 
       private
