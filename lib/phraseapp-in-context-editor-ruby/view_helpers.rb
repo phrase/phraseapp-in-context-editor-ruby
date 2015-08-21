@@ -5,7 +5,7 @@ module PhraseApp
         return "" unless PhraseApp::InContextEditor.enabled?
 
         js_config = ["projectId: '#{PhraseApp::InContextEditor.project_id}'"]
-        if PhraseApp::InContextEditor.api_host.present?
+        if PhraseApp::InContextEditor.api_host.present? && PhraseApp::InContextEditor.api_host != "https://api.phraseapp.com"
           js_config << "apiBaseUrl: '#{PhraseApp::InContextEditor.api_host}/api/v2'"
         end
 
