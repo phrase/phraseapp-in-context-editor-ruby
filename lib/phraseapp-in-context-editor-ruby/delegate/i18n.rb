@@ -105,20 +105,15 @@ module PhraseApp
           end
         end
 
-        def scoped(item)
-          @options.has_key?(:scope) ? "#{@options[:scope]}.#{item}" : item
-        end
-
         def process_fallback_item(item)
           if item.kind_of?(Symbol)
-            entry = scoped(item.to_s)
-            @fallback_keys << entry
-            if @key == "helpers.label.#{entry}" # http://apidock.com/rails/v3.1.0/ActionView/Helpers/FormHelper/label
-              @fallback_keys << "activerecord.attributes.#{entry}"
-            end
-
-            if @key.start_with?("simple_form.") # special treatment for simple form
-              @fallback_keys << "activerecord.attributes.#{item.to_s}"
+            if @options.has_key?(:scope)
+              if @options[:scope].is_a?(Array)
+                scope = @options[:scope].join(".")
+                @fallback_keys << "#{scope}.#{item}"
+              else
+                @fallback_keys << item.to_s
+              end
             end
           end
         end
