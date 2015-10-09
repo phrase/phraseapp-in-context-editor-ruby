@@ -260,9 +260,11 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
 
   describe "#extract_fallback_keys" do
     let(:options) { {} }
+    let(:key){ "key.with.defaults"}
 
     before(:each) do
       subject.instance_variable_set(:@options, options)
+      subject.instance_variable_set(:@key, key)
       subject.send(:extract_fallback_keys)
     end
 
@@ -278,6 +280,14 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
 
         it "all keys should be scoped" do
           subject.fallback_keys.should == ["scopeee.foo", "scopeee.bar"]
+        end
+
+        context "scope is a array" do
+          let(:options) { {default: [:foo, :bar], scope: [:baz, :boo]} }
+
+          it "all keys should be scoped" do
+            subject.fallback_keys.should == ["baz.boo.foo", "baz.boo.bar"]
+          end
         end
       end
     end

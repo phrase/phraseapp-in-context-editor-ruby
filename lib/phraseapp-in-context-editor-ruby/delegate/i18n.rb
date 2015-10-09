@@ -107,13 +107,22 @@ module PhraseApp
 
         def process_fallback_item(item)
           if item.kind_of?(Symbol)
+            fallback_key_name = item.to_s
             if @options.has_key?(:scope)
               if @options[:scope].is_a?(Array)
-                scope = @options[:scope].join(".")
-                @fallback_keys << "#{scope}.#{item}"
+                fallback_key_name = "#{@options[:scope].join(".")}.#{item}"
               else
-                @fallback_keys << item.to_s
+                fallback_key_name = "#{@options[:scope]}.#{item}"
               end
+            end
+            @fallback_keys << fallback_key_name
+
+            if @key == "helpers.label.#{fallback_key_name}" # http://apidock.com/rails/v3.1.0/ActionView/Helpers/FormHelper/label
+              @fallback_keys << "activerecord.attributes.#{fallback_key_name}"
+            end
+
+            if @key.start_with?("simple_form.") # special treatment for simple form
+              @fallback_keys << "activerecord.attributes.#{item}"
             end
           end
         end
