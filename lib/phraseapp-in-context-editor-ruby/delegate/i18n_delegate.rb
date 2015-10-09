@@ -9,7 +9,7 @@ require 'set'
 module PhraseApp
   module InContextEditor
     module Delegate
-      class I18n < Base
+      class I18nDelegate < Base
         attr_accessor :key, :display_key, :options, :api_client, :fallback_keys, :original_args
 
         def initialize(key, options={}, original_args=nil)

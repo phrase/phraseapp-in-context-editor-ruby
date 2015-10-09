@@ -62,7 +62,7 @@ describe PhraseApp::InContextEditor::BackendService do
         let(:args){ [key_name] }
         let(:key_is_blacklisted){ false }
 
-        it { should be_a PhraseApp::InContextEditor::Delegate::I18n }
+        it { should be_a PhraseApp::InContextEditor::Delegate::I18nDelegate }
         it { should eql '{{__phrase_foo.bar__}}' }
       end
 

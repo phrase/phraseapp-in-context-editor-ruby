@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'phraseapp-in-context-editor-ruby'
-require 'phraseapp-in-context-editor-ruby/delegate/i18n'
+require 'phraseapp-in-context-editor-ruby/delegate/i18n_delegate'
 
-describe PhraseApp::InContextEditor::Delegate::I18n do
+describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
   let(:key) { "foo.bar" }
   let(:options) { {} }
   let(:original_args) { stub }
-  let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
+  let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
 
   subject { delegate }
 
@@ -58,7 +58,7 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
   end
 
   describe "missing methods" do
-    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
     let(:i18n_translation) { [] }
 
     before(:each) do
@@ -183,7 +183,7 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
     let(:keys_from_api) { [] }
     let(:pre_cached) { [] }
     let(:pre_fetched) { [] }
-    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
 
     subject { delegate.send(:find_keys_within_phraseapp, key_names) }
 
@@ -233,7 +233,7 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
   describe "#covered_by_initital_caching?(key_name)" do
     let(:key_name_to_fetch) { "simple.form" }
 
-    subject { PhraseApp::InContextEditor::Delegate::I18n.new(key).send(:covered_by_initial_caching?, key_name_to_fetch) }
+    subject { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key).send(:covered_by_initial_caching?, key_name_to_fetch) }
 
     context "key starts with expression found in InContextEditor.cache_key_segments_initial" do
       before(:each) do
@@ -379,7 +379,7 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
   end
 
   describe "#warm_translation_key_names_cache" do
-    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
     subject { delegate.send(:cache).get(:translation_key_names) }
 
     before(:each) do
@@ -393,7 +393,7 @@ describe PhraseApp::InContextEditor::Delegate::I18n do
   end
 
   describe "#prefetched_key_names" do
-    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18n.new(key) }
+    let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
 
     subject { delegate.send(:prefetched_key_names) }
 
