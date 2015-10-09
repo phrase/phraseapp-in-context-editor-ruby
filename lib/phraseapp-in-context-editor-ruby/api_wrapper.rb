@@ -20,18 +20,18 @@ module PhraseApp
       end
 
       def keys_with_prefix(prefix)
-        params = PhraseApp::RequestParams::KeysListParams.new(q:"#{prefix}*")
+        params = PhraseApp::RequestParams::KeysSearchParams.new(q:"#{prefix}*")
         keys_list(params)
       end
 
       def keys_by_names(names)
         names = names.join(',')
-        params = PhraseApp::RequestParams::KeysListParams.new(:q => "name:#{names}")
+        params = PhraseApp::RequestParams::KeysSearchParams.new(:q => "name:#{names}")
         keys_list(params)
       end
 
       def keys_list(params)
-        PhraseApp::InContextEditor::ApiCollection.new(@api_client, "keys_list", project_id, params).collection
+        PhraseApp::InContextEditor::ApiCollection.new(@api_client, "keys_search", project_id, params).collection
       end
 
       def blacklisted_keys

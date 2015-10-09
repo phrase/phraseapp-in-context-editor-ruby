@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    method: post
+    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
     body:
       encoding: UTF-8
       string: "{\"q\":\"foo*\"}"
@@ -62,8 +62,8 @@ http_interactions:
     http_version: 
   recorded_at: Thu, 18 Jun 2015 14:40:23 GMT
 - request:
-    method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    method: post
+    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
     body:
       encoding: UTF-8
       string: "{\"q\":\"bar*\"}"
@@ -123,8 +123,8 @@ http_interactions:
     http_version: 
   recorded_at: Thu, 18 Jun 2015 14:40:24 GMT
 - request:
-    method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    method: post
+    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
     body:
       encoding: UTF-8
       string: "{\"q\":\"nested*\"}"
@@ -184,8 +184,8 @@ http_interactions:
     http_version: 
   recorded_at: Thu, 18 Jun 2015 14:40:24 GMT
 - request:
-    method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100
+    method: post
+    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
     body:
       encoding: UTF-8
       string: "{\"q\":\"foo.bar*\"}"
