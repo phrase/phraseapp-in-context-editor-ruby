@@ -12,46 +12,86 @@ describe PhraseApp::InContextEditor::ViewHelpers do
   let(:helpers) { Helpers.new }
 
   describe "#phraseapp_in_context_editor_js" do
-    context "phrase is enabled" do
+    let(:opts) { nil }
+
+    subject { helpers.phraseapp_in_context_editor_js(opts) }
+
+    before(:each) do
+      PhraseApp::InContextEditor.config.js_host = "custom.phraseapp.com"
+    end
+
+    context "editor is enabled" do
       before(:each) do
         PhraseApp::InContextEditor.stub(:enabled?).and_return(true)
       end
 
-      it "should return a javascript block" do
-        helpers.phraseapp_in_context_editor_js.should include("<script>")
-        helpers.phraseapp_in_context_editor_js.should include("</script>")
+      it { is_expected.to include("<script>") }
+      it { is_expected.to include("</script>") }
+
+      describe "js host setting" do
+        it { is_expected.to include("custom.phraseapp.com") }
       end
 
-      it "should use the set host name" do
-        PhraseApp::InContextEditor.config.js_host = "faridbang.de"
-        helpers.phraseapp_in_context_editor_js.should include("faridbang.de")
+      describe "tls setting" do
+        context "tls enabled" do
+          before(:each) do
+            PhraseApp::InContextEditor.config.js_use_ssl = true
+          end
+
+          it { is_expected.to include("https://") }
+        end
+
+        context "tls disabled" do
+          before(:each) do
+            PhraseApp::InContextEditor.config.js_use_ssl = false
+          end
+
+          it { is_expected.to include("http://") }
+        end
       end
 
-      it "should use https when configured" do
-        PhraseApp::InContextEditor.config.js_use_ssl = true
-        helpers.phraseapp_in_context_editor_js.should include("https")
+      describe "api host setting" do
+        before(:each) do
+          PhraseApp::InContextEditor.config.api_host = "http://localhost:3000"
+        end
+
+        it { is_expected.to include("\"apiBaseUrl\":\"http://localhost:3000/api/v2\"") }
       end
 
-      it "should use http when configured" do
-        PhraseApp::InContextEditor.config.js_use_ssl = false
-        helpers.phraseapp_in_context_editor_js.should include("http")
-        helpers.phraseapp_in_context_editor_js.should_not include("https")
+      describe "prefix setting" do
+        before(:each) do
+          PhraseApp::InContextEditor.config.prefix = "[[____"
+        end
+
+        it { is_expected.to include("\"prefix\":\"[[____\"") }
       end
 
-      it "should use api_host when configured" do
-        PhraseApp::InContextEditor.config.api_host = "http://localhost:3000"
-        helpers.phraseapp_in_context_editor_js.should include("apiBaseUrl: 'http://localhost:3000/api/v2'")
+      describe "suffix setting" do
+        before(:each) do
+          PhraseApp::InContextEditor.config.suffix = "____]]"
+        end
+
+        it { is_expected.to include("\"suffix\":\"____]]\"") }
+      end
+
+      describe "overriding options" do
+        let(:opts) { {prefix: "__%%"} }
+
+        before(:each) do
+          PhraseApp::InContextEditor.config.prefix = "____]]"
+        end
+
+        it { is_expected.not_to include("\"prefix\":\"____]]\"") }
+        it { is_expected.to include("\"prefix\":\"__%%\"") }
       end
     end
 
-    context "phrase is disabled" do
+    context "editor is disabled" do
       before(:each) do
         PhraseApp::InContextEditor.stub(:enabled?).and_return(false)
       end
 
-      it "should not return a thing" do
-        helpers.phraseapp_in_context_editor_js.should == ""
-      end
+      it { is_expected.to eql "" }
     end
   end
 end
