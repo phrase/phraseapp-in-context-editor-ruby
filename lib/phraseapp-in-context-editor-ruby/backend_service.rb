@@ -64,6 +64,7 @@ module PhraseApp
       def phraseapp_delegate_for(args)
         key = given_key_from_args(args)
         return nil unless present?(key)
+
         options = args[1].nil? ? {} : args[1]
         PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key, options, args)
       end
