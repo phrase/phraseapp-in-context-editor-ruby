@@ -93,6 +93,14 @@ module PhraseApp
         @@js_use_ssl = js_use_ssl
       end
 
+      def js_path
+        @@js_path ||= "/assets/in-context-editor/2.0/app.js"
+      end
+
+      def js_path=(js_path)
+        @@js_path = js_path
+      end
+
       def cache_key_segments_initial
         @@cache_key_segments_initial ||= ["simple_form"]
       end

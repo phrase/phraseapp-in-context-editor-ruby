@@ -50,6 +50,24 @@ describe PhraseApp::InContextEditor::ViewHelpers do
         end
       end
 
+      describe "asset path setting" do
+        context "no custom asset path set" do
+          before(:each) do
+            PhraseApp::InContextEditor.config.js_path = nil
+          end
+
+          it { is_expected.to include("/assets/in-context-editor/2.0/app.js") }
+        end
+
+        context "custom asset path set" do
+          before(:each) do
+            PhraseApp::InContextEditor.config.js_path = "/my-assets/app.js"
+          end
+
+          it { is_expected.to include("/my-assets/app.js") }
+        end
+      end
+
       describe "api host setting" do
         before(:each) do
           PhraseApp::InContextEditor.config.api_host = "http://localhost:3000"
