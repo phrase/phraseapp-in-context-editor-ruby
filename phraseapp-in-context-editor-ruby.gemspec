@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('vcr', '~> 2.9')
   s.add_development_dependency('timecop', '~> 0.7')
   s.add_development_dependency('rails', '~> 4.2')
+  s.add_development_dependency('github_changelog_generator')
 end
