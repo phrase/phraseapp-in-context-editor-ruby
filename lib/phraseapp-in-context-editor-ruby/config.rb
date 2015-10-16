@@ -101,6 +101,14 @@ module PhraseApp
         @@js_path = js_path
       end
 
+      def js_options
+        @@js_options ||= {}
+      end
+
+      def js_options=(js_options)
+        @@js_options = js_options
+      end
+
       def cache_key_segments_initial
         @@cache_key_segments_initial ||= ["simple_form"]
       end

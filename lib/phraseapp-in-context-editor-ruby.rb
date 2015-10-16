@@ -74,6 +74,10 @@ module PhraseApp
         config.js_path
       end
 
+      def js_options
+        config.js_options
+      end
+
       def api_host
         config.api_host
       end

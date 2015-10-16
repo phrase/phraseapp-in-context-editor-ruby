@@ -6,13 +6,17 @@ module PhraseApp
       def phraseapp_in_context_editor_js(opts={})
         return "" unless PhraseApp::InContextEditor.enabled?
 
-        opts = opts.nil? ? {} : opts.inject({}) { |conf, (k,v)| conf[k.to_s] = v; conf} # stringify to reduce possible errors when passing symbols
+        # stringify to reduce possible errors when passing symbols
+        js_default_options = PhraseApp::InContextEditor.js_options.inject({}) { |conf, (k,v)| conf[k.to_s] = v; conf}
+        opts = opts.nil? ? {} : opts.inject({}) { |conf, (k,v)| conf[k.to_s] = v; conf}
+
+        # js options
         configuration = {
           'projectId' => PhraseApp::InContextEditor.project_id,
           'prefix' => PhraseApp::InContextEditor.prefix,
           'suffix' => PhraseApp::InContextEditor.suffix,
           'apiBaseUrl' => "#{PhraseApp::InContextEditor.api_host}/api/v2",
-        }.merge(opts)
+        }.merge(js_default_options).merge(opts)
 
         snippet = <<-eos
           <script>
