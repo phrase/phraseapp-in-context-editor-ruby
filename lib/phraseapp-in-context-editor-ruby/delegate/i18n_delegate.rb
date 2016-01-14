@@ -41,6 +41,8 @@ module PhraseApp
         private
 
         def translation_or_subkeys
+          return nil if @key.nil? || @key.to_s == ""
+
           keys = api_wrapper.keys_with_prefix(@key)
           return nil unless keys.present?
 
