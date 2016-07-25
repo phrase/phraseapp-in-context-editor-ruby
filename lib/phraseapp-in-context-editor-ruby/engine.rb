@@ -6,7 +6,7 @@ if defined? Rails
   module PhraseApp
     module InContextEditor
       class Engine < Rails::Engine
-        initializer 'phraseapp-in-context-editor-ruby', after: :disable_dependency_loading do |app|
+        initializer 'phraseapp-in-context-editor-ruby', before: :disable_dependency_loading do |app|
           if PhraseApp::InContextEditor.enabled?
             require 'phraseapp-in-context-editor-ruby/adapters/i18n'
             require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
