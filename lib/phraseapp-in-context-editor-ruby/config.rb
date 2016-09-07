@@ -3,140 +3,70 @@
 module PhraseApp
   module InContextEditor
     class Config
-      def project_id
-        @@project_id = "" if !defined? @@project_id or @@project_id.nil?
-        @@project_id
-      end
+      attr_accessor :project_id,
+        :access_token,
+        :enabled,
+        :skip_ssl_verification,
+        :backend,
+        :api_client,
+        :prefix,
+        :suffix,
+        :api_host,
+        :js_host,
+        :js_use_ssl,
+        :js_path,
+        :js_options,
+        :cache_key_segments_initial,
+        :cache_lifetime,
+        :ignored_keys
 
-      def project_id=(project_id)
-        @@project_id = project_id
-      end
-
-      def access_token
-        @@access_token = "" if !defined? @@access_token or @@access_token.nil?
-        @@access_token
+      def initialize(attrs={})
+        @project_id = attrs.fetch(:project_id, nil)
+        @access_token = attrs.fetch(:access_token, nil)
+        @enabled = attrs.fetch(:enabled, false)
+        @skip_ssl_verification = attrs.fetch(:skip_ssl_verification, false)
+        @backend = attrs.fetch(:backend, PhraseApp::InContextEditor::BackendService.new)
+        @prefix = attrs.fetch(:prefix, "{{__")
+        @suffix = attrs.fetch(:suffix, "__}}")
+        @api_host = attrs.fetch(:api_host, "https://api.phraseapp.com")
+        @js_host = attrs.fetch(:js_host, "phraseapp.com")
+        @js_use_ssl = attrs.fetch(:js_use_ssl, true)
+        @js_path = attrs.fetch(:js_path, "/assets/in-context-editor/2.0/app.js")
+        @js_options = attrs.fetch(:js_options, {})
+        @cache_key_segments_initial = attrs.fetch(:cache_key_segments_initial, ["simple_form"])
+        @cache_lifetime = attrs.fetch(:cache_lifetime, 300)
+        @ignored_keys = attrs.fetch(:ignored_keys, [])
+        @api_client = attrs.fetch(:api_client, build_api_client)
       end
 
       def access_token=(access_token)
-        @@access_token = access_token
-      end
-
-      def enabled
-        @@enabled = false if !defined? @@enabled or @@enabled.nil?
-        @@enabled
-      end
-
-      def enabled=(enabled)
-        @@enabled = enabled
-      end
-
-      def skip_ssl_verification
-        @@skip_ssl_verification = false if !defined? @@skip_ssl_verification or @@skip_ssl_verification.nil?
-        @@skip_ssl_verification
-      end
-
-      def skip_ssl_verification=(skip_ssl_verification)
-        @@skip_ssl_verification = skip_ssl_verification
-      end
-
-      def backend
-        @@backend ||= PhraseApp::InContextEditor::BackendService.new
-      end
-
-      def backend=(backend)
-        @@backend = backend
-      end
-
-      def api_client
-        @@api_client ||= authorized_api_client
-      end
-
-      def prefix
-        @@prefix ||= "{{__"
-      end
-
-      def prefix=(prefix)
-        @@prefix = prefix
-      end
-
-      def suffix
-        @@suffix ||= "__}}"
-      end
-
-      def suffix=(suffix)
-        @@suffix = suffix
-      end
-
-      def api_host
-        @@api_host = "https://api.phraseapp.com" if !defined? @@api_host or @@api_host.nil?
-        @@api_host
+        @access_token = access_token
+        reload_api_client
       end
 
       def api_host=(api_host)
-        @@api_host = api_host
+        @api_host = api_host
+        reload_api_client
       end
 
-      def js_host
-        @@js_host ||= 'phraseapp.com'
-      end
-
-      def js_host=(js_host)
-        @@js_host = js_host
-      end
-
-      def js_use_ssl
-        @@js_use_ssl = true if !defined? @@js_use_ssl or @@js_use_ssl.nil?
-        @@js_use_ssl
-      end
-
-      def js_use_ssl=(js_use_ssl)
-        @@js_use_ssl = js_use_ssl
-      end
-
-      def js_path
-        @@js_path ||= "/assets/in-context-editor/2.0/app.js"
-      end
-
-      def js_path=(js_path)
-        @@js_path = js_path
-      end
-
-      def js_options
-        @@js_options ||= {}
-      end
-
-      def js_options=(js_options)
-        @@js_options = js_options
-      end
-
-      def cache_key_segments_initial
-        @@cache_key_segments_initial ||= ["simple_form"]
-      end
-
-      def cache_key_segments_initial=(cache_key_segments_initial=[])
-        @@cache_key_segments_initial = cache_key_segments_initial
-      end
-
-      def cache_lifetime
-        @@cache_lifetime ||= 300
-      end
-
-      def cache_lifetime=(cache_lifetime)
-        @@cache_lifetime = cache_lifetime
-      end
-
-      def ignored_keys
-        @@ignored_keys ||= []
-      end
-
-      def ignored_keys=(ignored_keys)
-        @@ignored_keys = ignored_keys
+      def skip_ssl_verification=(skip_ssl_verification)
+        @skip_ssl_verification = skip_ssl_verification
+        reload_api_client
       end
 
     protected
-      def authorized_api_client
-        credentials = PhraseApp::Auth::Credentials.new(token: PhraseApp::InContextEditor.access_token, host: PhraseApp::InContextEditor.api_host, skip_ssl_verification: PhraseApp::InContextEditor.skip_ssl_verification)
-        client = PhraseApp::Client.new(credentials)
+      def build_api_client
+        auth_credentials = PhraseApp::Auth::Credentials.new(
+          token: @access_token,
+          host: @api_host,
+          skip_ssl_verification: @skip_ssl_verification
+        )
+
+        PhraseApp::Client.new(auth_credentials)
+      end
+
+      def reload_api_client
+        @api_client = build_api_client
       end
     end
   end

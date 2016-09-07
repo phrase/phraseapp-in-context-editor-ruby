@@ -22,7 +22,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
     context "editor is enabled" do
       before(:each) do
-        PhraseApp::InContextEditor.stub(:enabled?).and_return(true)
+        PhraseApp::InContextEditor.config.enabled = true
       end
 
       it { is_expected.to include("<script>") }
@@ -52,10 +52,6 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
       describe "asset path setting" do
         context "no custom asset path set" do
-          before(:each) do
-            PhraseApp::InContextEditor.config.js_path = nil
-          end
-
           it { is_expected.to include("/assets/in-context-editor/2.0/app.js") }
         end
 
@@ -106,7 +102,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
     context "editor is disabled" do
       before(:each) do
-        PhraseApp::InContextEditor.stub(:enabled?).and_return(false)
+        PhraseApp::InContextEditor.config.enabled = false
       end
 
       it { is_expected.to eql "" }

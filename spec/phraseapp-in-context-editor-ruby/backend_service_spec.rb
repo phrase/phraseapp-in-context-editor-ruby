@@ -6,6 +6,10 @@ require 'phraseapp-in-context-editor-ruby/backend_service'
 describe PhraseApp::InContextEditor::BackendService do
   let(:phraseapp_service){ PhraseApp::InContextEditor::BackendService.new }
 
+  before(:each) do
+    PhraseApp::InContextEditor.config.access_token = "test-token"
+  end
+
   describe "#translate" do
     let(:key_name) { "foo.bar" }
     let(:i18n_translation) { double }
@@ -24,7 +28,7 @@ describe PhraseApp::InContextEditor::BackendService do
 
     context "phrase is enabled" do
       before(:each) do
-        PhraseApp::InContextEditor.stub(:disabled?){ false }
+        PhraseApp::InContextEditor.enabled = true
       end
 
       context "key is blacklisted" do
@@ -91,7 +95,7 @@ describe PhraseApp::InContextEditor::BackendService do
       let(:args) { [key_name] }
 
       before(:each) do
-        PhraseApp::InContextEditor.stub(:disabled?){ true }
+        PhraseApp::InContextEditor.enabled = false
       end
 
       it { should eql i18n_translation }

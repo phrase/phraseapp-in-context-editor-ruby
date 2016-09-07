@@ -5,9 +5,11 @@ require 'phraseapp-in-context-editor-ruby/key_names_cache'
 describe PhraseApp::InContextEditor::KeyNamesCache do
   let(:key_names_cache){ PhraseApp::InContextEditor::KeyNamesCache.new(PhraseApp::InContextEditor::ApiWrapper.new) }
 
+  before(:each) do
+    PhraseApp::InContextEditor.config.access_token = "test-token"
+  end
 
   describe "#prefetched_key_names" do
-
     subject { key_names_cache.send(:prefetched_key_names) }
 
     before(:each) do
