@@ -6,7 +6,7 @@ describe PhraseApp::InContextEditor::KeyNamesCache do
   let(:key_names_cache){ PhraseApp::InContextEditor::KeyNamesCache.new(PhraseApp::InContextEditor::ApiWrapper.new) }
 
   before(:each) do
-    PhraseApp::InContextEditor.config.access_token = "test-token"
+    PhraseApp::InContextEditor::Config.access_token = "test-token"
   end
 
   describe "#prefetched_key_names", vcr: {cassette_name: 'fetch list of keys filtered by key names', match_requests_on: [:method, :uri, :body]} do

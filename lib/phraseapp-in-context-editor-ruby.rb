@@ -83,17 +83,12 @@ module PhraseApp
       end
 
       def api_client
-        credentials = PhraseApp::Auth::Credentials.new(
-          token: access_token,
-          host: api_host,
-          skip_ssl_verification: skip_ssl_verification
-        )
-        PhraseApp::Client.new(credentials)
+        config.api_client
       end
     end
 
     def self.configure
-      yield(self.config)
+      yield(PhraseApp::InContextEditor::Config)
     end
 
     def self.with_config(config_options={}, &block)

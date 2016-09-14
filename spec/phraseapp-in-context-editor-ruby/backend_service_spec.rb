@@ -7,7 +7,7 @@ describe PhraseApp::InContextEditor::BackendService do
   let(:phraseapp_service){ PhraseApp::InContextEditor::BackendService.new }
 
   before(:each) do
-    PhraseApp::InContextEditor.config.access_token = "test-token"
+    PhraseApp::InContextEditor::Config.access_token = "test-token"
   end
 
   describe "#translate" do

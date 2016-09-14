@@ -66,7 +66,7 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
       I18n.stub(:translate_without_phraseapp).and_return("i18n_translation")
     end
 
-    context "translation is a string", vcr: {cassette_name: "translation is a string", record: :new_episodes, match_requests_on: [:method, :uri, :body]} do
+    context "translation is a string", vcr: {cassette_name: "translation is a string", match_requests_on: [:method, :uri, :body]} do
       let(:key) { "foo" }
 
       context "#each |key,value|" do

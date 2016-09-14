@@ -17,12 +17,12 @@ describe PhraseApp::InContextEditor::ViewHelpers do
     subject { helpers.phraseapp_in_context_editor_js(opts) }
 
     before(:each) do
-      PhraseApp::InContextEditor.config.js_host = "custom.phraseapp.com"
+      PhraseApp::InContextEditor::Config.js_host = "custom.phraseapp.com"
     end
 
     context "editor is enabled" do
       before(:each) do
-        PhraseApp::InContextEditor.config.enabled = true
+        PhraseApp::InContextEditor::Config.enabled = true
       end
 
       it { is_expected.to include("<script>") }
@@ -35,7 +35,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
       describe "tls setting" do
         context "tls enabled" do
           before(:each) do
-            PhraseApp::InContextEditor.config.js_use_ssl = true
+            PhraseApp::InContextEditor::Config.js_use_ssl = true
           end
 
           it { is_expected.to include("https://") }
@@ -43,7 +43,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
         context "tls disabled" do
           before(:each) do
-            PhraseApp::InContextEditor.config.js_use_ssl = false
+            PhraseApp::InContextEditor::Config.js_use_ssl = false
           end
 
           it { is_expected.to include("http://") }
@@ -57,7 +57,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
         context "custom asset path set" do
           before(:each) do
-            PhraseApp::InContextEditor.config.js_path = "/my-assets/app.js"
+            PhraseApp::InContextEditor::Config.js_path = "/my-assets/app.js"
           end
 
           it { is_expected.to include("/my-assets/app.js") }
@@ -66,7 +66,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
       describe "api host setting" do
         before(:each) do
-          PhraseApp::InContextEditor.config.api_host = "http://localhost:3000"
+          PhraseApp::InContextEditor::Config.api_host = "http://localhost:3000"
         end
 
         it { is_expected.to include("\"apiBaseUrl\":\"http://localhost:3000/api/v2\"") }
@@ -74,7 +74,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
       describe "prefix setting" do
         before(:each) do
-          PhraseApp::InContextEditor.config.prefix = "[[____"
+          PhraseApp::InContextEditor::Config.prefix = "[[____"
         end
 
         it { is_expected.to include("\"prefix\":\"[[____\"") }
@@ -82,7 +82,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
       describe "suffix setting" do
         before(:each) do
-          PhraseApp::InContextEditor.config.suffix = "____]]"
+          PhraseApp::InContextEditor::Config.suffix = "____]]"
         end
 
         it { is_expected.to include("\"suffix\":\"____]]\"") }
@@ -102,7 +102,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
     context "editor is disabled" do
       before(:each) do
-        PhraseApp::InContextEditor.config.enabled = false
+        PhraseApp::InContextEditor::Config.enabled = false
       end
 
       it { is_expected.to eql "" }

@@ -20,6 +20,17 @@ describe PhraseApp::InContextEditor::Config do
     PhraseApp::InContextEditor::Config.project_id = "foo"
   end
 
+  describe "global config change" do
+    it "should invalidate the api client to ensure that it always uses the correct access token etc" do
+      first_api_client = PhraseApp::InContextEditor::Config.api_client
+      PhraseApp::InContextEditor::Config.access_token = "my-new-token"
+      second_api_client = PhraseApp::InContextEditor::Config.api_client
+      # Hacky: Currently no better way to check api client renewal
+      second_api_client.object_id.should_not == first_api_client.object_id
+      second_api_client.instance_eval("@credentials").send(:token).should eql "my-new-token"
+    end
+  end
+
   describe "#assign_values(config_options)" do
     it "should assign the config values to the instance" do
       config = PhraseApp::InContextEditor::Config.new
@@ -36,6 +47,12 @@ describe PhraseApp::InContextEditor::Config do
       PhraseApp::InContextEditor::Config.project_id.should eql "foo"
       PhraseApp::InContextEditor::Config.reset_to_defaults!
       PhraseApp::InContextEditor::Config.project_id.should eql nil
+    end
+  end
+
+  describe "#self.api_client" do
+    it "should be generate an api client by default" do
+      PhraseApp::InContextEditor::Config.api_client.should be_a(PhraseApp::Client)
     end
   end
 end
