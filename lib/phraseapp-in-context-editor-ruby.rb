@@ -95,6 +95,14 @@ module PhraseApp
     def self.configure
       yield(self.config)
     end
+
+    def self.with_config(config_options={}, &block)
+      original_config = self.config.dup
+      config.assign_values(config_options)
+      yield
+    ensure
+      self.config = original_config
+    end
   end
 
   autoload :ViewHelpers, 'phraseapp-in-context-editor-ruby/view_helpers'

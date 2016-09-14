@@ -9,7 +9,7 @@ describe PhraseApp::InContextEditor::KeyNamesCache do
     PhraseApp::InContextEditor.config.access_token = "test-token"
   end
 
-  describe "#prefetched_key_names" do
+  describe "#prefetched_key_names", vcr: {cassette_name: 'fetch list of keys filtered by key names', match_requests_on: [:method, :uri, :body]} do
     subject { key_names_cache.send(:prefetched_key_names) }
 
     before(:each) do
@@ -19,39 +19,22 @@ describe PhraseApp::InContextEditor::KeyNamesCache do
     context "api returned a string" do
       let(:initial_segments) { ["foo"] }
 
-      it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
-          should include("foo")
-        end
-      end
+      it { should include("foo") }
     end
 
     context "api returned a hash" do
       #{"bar" => "lorem"}
       let(:initial_segments) { ["bar"] }
 
-      it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
-          should include("bar.foo")
-        end
-      end
+      it { should include("bar.foo") }
     end
 
     context "api returned a nested hash" do
       #{"bar" => {"baz" => "ipsum", "def" => "lorem"}}
       let(:initial_segments) { ["nested"] }
 
-      it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
-          should include("nested.bar.baz")
-        end
-      end
-
-      it do
-        VCR.use_cassette('fetch list of keys filtered by key names', :record => :new_episodes, :match_requests_on => [:method, :uri, :body]) do
-          should include("nested.bar.def")
-        end
-      end
+      it { should include("nested.bar.baz") }
+      it { should include("nested.bar.def") }
     end
   end
 

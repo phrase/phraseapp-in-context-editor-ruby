@@ -20,6 +20,16 @@ describe PhraseApp::InContextEditor::Config do
     PhraseApp::InContextEditor::Config.project_id = "foo"
   end
 
+  describe "#assign_values(config_options)" do
+    it "should assign the config values to the instance" do
+      config = PhraseApp::InContextEditor::Config.new
+      config.project_id.should eql nil
+      config.assign_values(project_id: "foo")
+      config.project_id.should eql "foo"
+      PhraseApp::InContextEditor::Config.project_id.should eql nil
+    end
+  end
+
   describe "#self.reset_to_defaults!" do
     it "should reset the class level variables to their defaults" do
       PhraseApp::InContextEditor::Config.project_id = "foo"

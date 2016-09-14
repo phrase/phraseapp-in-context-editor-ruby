@@ -41,6 +41,12 @@ module PhraseApp
         end
       end
 
+      def assign_values(config_options={})
+        config_options.each do |config_option, value|
+          self.send("#{config_option}=", value)
+        end
+      end
+
       def self.reset_to_defaults!
         CONFIG_OPTIONS.each do |option, default_value|
           send("#{option}=", default_value)

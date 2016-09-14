@@ -15,9 +15,11 @@ RSpec.configure do |config|
     Timecop.return
   end
 
-  config.before(:each) do
-    PhraseApp::InContextEditor.stub(:access_token).and_return("5c957b9ecd8db363b378806d2062c6289df379d6e333f37386f680270b108cf1")
-    PhraseApp::InContextEditor.stub(:project_id).and_return("49463eeb0470aadbd3816d4755e9f5ed")
+  config.before(:each) do |example|
+    if example.metadata[:vcr]
+      PhraseApp::InContextEditor.stub(:access_token).and_return("5c957b9ecd8db363b378806d2062c6289df379d6e333f37386f680270b108cf1")
+      PhraseApp::InContextEditor.stub(:project_id).and_return("49463eeb0470aadbd3816d4755e9f5ed")
+    end
   end
 end
 

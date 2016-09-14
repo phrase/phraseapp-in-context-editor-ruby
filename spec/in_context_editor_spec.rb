@@ -1,30 +1,6 @@
 require 'spec_helper'
 
 describe PhraseApp::InContextEditor do
-  describe "#self.enabled?" do
-    it "should return true if phrase is enabled" do
-      PhraseApp::InContextEditor.config.stub(:enabled).and_return(true)
-      PhraseApp::InContextEditor.enabled?.should be_truthy
-    end
-
-    it "should return false if phrase is not enabled" do
-      PhraseApp::InContextEditor.config.stub(:enabled).and_return(false)
-      PhraseApp::InContextEditor.enabled?.should be_falsey
-    end
-  end
-
-  describe "#self.disabled?" do
-    it "should return true if phrase is disabled" do
-      PhraseApp::InContextEditor.config.stub(:enabled).and_return(false)
-      PhraseApp::InContextEditor.disabled?.should be_truthy
-    end
-
-    it "should return false if phrase is not disabled" do
-      PhraseApp::InContextEditor.config.stub(:enabled).and_return(true)
-      PhraseApp::InContextEditor.disabled?.should be_falsey
-    end
-  end
-
   describe "self.configure" do
     before(:each) do
       PhraseApp::InContextEditor.configure do |config|
@@ -35,5 +11,26 @@ describe PhraseApp::InContextEditor do
 
     specify { PhraseApp::InContextEditor.prefix.should eql("my prefix") }
     specify { PhraseApp::InContextEditor.suffix.should eql("my suffix") }
+  end
+
+  describe "#self.with_config(config_options={}, &block)" do
+    it "should allow to set a config that is only present in a given block" do
+      PhraseApp::InContextEditor.config.project_id = "old-project-id"
+      PhraseApp::InContextEditor.project_id.should eql "old-project-id"
+      project_id_1 = nil
+      project_id_2 = nil
+      PhraseApp::InContextEditor.with_config(project_id: "my-new-project-id") do
+        PhraseApp::InContextEditor.with_config(project_id: "my-newest-project-id") do
+          project_id_2 = PhraseApp::InContextEditor.project_id
+        end
+
+        project_id_1 = PhraseApp::InContextEditor.project_id
+      end
+
+      project_id_1.should eql "my-new-project-id"
+      project_id_2.should eql "my-newest-project-id"
+
+      PhraseApp::InContextEditor.project_id.should eql "old-project-id"
+    end
   end
 end
