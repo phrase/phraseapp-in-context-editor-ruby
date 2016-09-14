@@ -83,7 +83,12 @@ module PhraseApp
       end
 
       def api_client
-        config.api_client
+        credentials = PhraseApp::Auth::Credentials.new(
+          token: access_token,
+          host: api_host,
+          skip_ssl_verification: skip_ssl_verification
+        )
+        PhraseApp::Client.new(credentials)
       end
     end
 
