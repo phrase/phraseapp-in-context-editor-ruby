@@ -6,6 +6,10 @@ require 'phraseapp-in-context-editor-ruby/backend_service'
 describe PhraseApp::InContextEditor::BackendService do
   let(:phraseapp_service){ PhraseApp::InContextEditor::BackendService.new }
 
+  before(:each) do
+    PhraseApp::InContextEditor::Config.access_token = "test-token"
+  end
+
   describe "#translate" do
     let(:key_name) { "foo.bar" }
     let(:i18n_translation) { double }
@@ -24,7 +28,7 @@ describe PhraseApp::InContextEditor::BackendService do
 
     context "phrase is enabled" do
       before(:each) do
-        PhraseApp::InContextEditor.stub(:disabled?){ false }
+        PhraseApp::InContextEditor.enabled = true
       end
 
       context "key is blacklisted" do
@@ -67,9 +71,9 @@ describe PhraseApp::InContextEditor::BackendService do
       end
 
       describe "different arguments given" do
-        context "default array given" do
+        context "default array given", vcr: {cassette_name: 'fetch list of keys filtered by fallback key names'} do
           let(:args){ [:key, { :default => [:first_fallback, :second_fallback] }] }
-          it { VCR.use_cassette('fetch list of keys filtered by fallback key names') { should eql '{{__phrase_key__}}' }}
+          it { should eql '{{__phrase_key__}}' }
         end
 
         context "default string given" do
@@ -91,7 +95,7 @@ describe PhraseApp::InContextEditor::BackendService do
       let(:args) { [key_name] }
 
       before(:each) do
-        PhraseApp::InContextEditor.stub(:disabled?){ true }
+        PhraseApp::InContextEditor.enabled = false
       end
 
       it { should eql i18n_translation }
@@ -186,18 +190,16 @@ describe PhraseApp::InContextEditor::BackendService do
     end
   end
 
-  describe "#blacklisted_keys" do
+  describe "#blacklisted_keys", vcr: {cassette_name: 'fetch list of blacklisted keys'} do
     subject { phraseapp_service.send(:blacklisted_keys) }
 
-    it { VCR.use_cassette('fetch list of blacklisted keys') { should eql ["faker*"] } }
+    it { should eql ["faker*"] }
 
     describe "memoizing the blacklisted_keys" do
-      specify {
-        VCR.use_cassette('fetch list of blacklisted keys') do
-          old_id = phraseapp_service.send(:blacklisted_keys).object_id
-          old_id.should eql subject.object_id
-        end
-      }
+      specify do
+        old_id = phraseapp_service.send(:blacklisted_keys).object_id
+        old_id.should eql subject.object_id
+      end
     end
   end
 

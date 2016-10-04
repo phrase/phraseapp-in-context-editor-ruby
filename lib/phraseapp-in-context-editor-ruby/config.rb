@@ -1,142 +1,83 @@
 # -*- encoding : utf-8 -*-
-
 module PhraseApp
   module InContextEditor
     class Config
-      def project_id
-        @@project_id = "" if !defined? @@project_id or @@project_id.nil?
-        @@project_id
+      CONFIG_OPTIONS = {
+        project_id: nil,
+        access_token: nil,
+        enabled: false,
+        skip_ssl_verification: false,
+        backend: PhraseApp::InContextEditor::BackendService.new,
+        prefix: "{{__",
+        suffix: "__}}",
+        api_host: "https://api.phraseapp.com",
+        js_host: "phraseapp.com",
+        js_use_ssl: true,
+        js_path: "/assets/in-context-editor/2.0/app.js",
+        js_options: {},
+        cache_key_segments_initial: ["simple_form"],
+        cache_lifetime: 300,
+        ignored_keys: [],
+      }.freeze
+
+      CONFIG_OPTIONS_GLOBAL_ONLY = [
+        :access_token,
+        :skip_ssl_verification,
+        :api_host
+      ].freeze
+
+      CONFIG_OPTIONS.each do |option, default_value|
+        class_eval "@@#{option} = CONFIG_OPTIONS[:#{option}]"
+
+        define_method("#{option}=") do |value|
+          instance_eval "@#{option} = value; self.class.invalidate_api_client"
+        end unless CONFIG_OPTIONS_GLOBAL_ONLY.include?(option)
+
+        define_method("#{option}") do
+          instance_eval "defined?(@#{option}) ? @#{option} : self.class.#{option}"
+        end
+
+        define_singleton_method("#{option}=") do |value|
+          instance_eval "@@#{option} = value; invalidate_api_client"
+        end
+
+        define_singleton_method("#{option}") do
+          instance_eval "@@#{option}"
+        end
       end
 
-      def project_id=(project_id)
-        @@project_id = project_id
-      end
-
-      def access_token
-        @@access_token = "" if !defined? @@access_token or @@access_token.nil?
-        @@access_token
-      end
-
-      def access_token=(access_token)
-        @@access_token = access_token
-      end
-
-      def enabled
-        @@enabled = false if !defined? @@enabled or @@enabled.nil?
-        @@enabled
-      end
-
-      def enabled=(enabled)
-        @@enabled = enabled
-      end
-
-      def skip_ssl_verification
-        @@skip_ssl_verification = false if !defined? @@skip_ssl_verification or @@skip_ssl_verification.nil?
-        @@skip_ssl_verification
-      end
-
-      def skip_ssl_verification=(skip_ssl_verification)
-        @@skip_ssl_verification = skip_ssl_verification
-      end
-
-      def backend
-        @@backend ||= PhraseApp::InContextEditor::BackendService.new
-      end
-
-      def backend=(backend)
-        @@backend = backend
+      def self.api_client
+        @@api_client ||= build_api_client
       end
 
       def api_client
-        @@api_client ||= authorized_api_client
+        self.class.api_client
       end
 
-      def prefix
-        @@prefix ||= "{{__"
+      def assign_values(config_options={})
+        config_options.each do |config_option, value|
+          self.send("#{config_option}=", value)
+        end
       end
 
-      def prefix=(prefix)
-        @@prefix = prefix
-      end
-
-      def suffix
-        @@suffix ||= "__}}"
-      end
-
-      def suffix=(suffix)
-        @@suffix = suffix
-      end
-
-      def api_host
-        @@api_host = "https://api.phraseapp.com" if !defined? @@api_host or @@api_host.nil?
-        @@api_host
-      end
-
-      def api_host=(api_host)
-        @@api_host = api_host
-      end
-
-      def js_host
-        @@js_host ||= 'phraseapp.com'
-      end
-
-      def js_host=(js_host)
-        @@js_host = js_host
-      end
-
-      def js_use_ssl
-        @@js_use_ssl = true if !defined? @@js_use_ssl or @@js_use_ssl.nil?
-        @@js_use_ssl
-      end
-
-      def js_use_ssl=(js_use_ssl)
-        @@js_use_ssl = js_use_ssl
-      end
-
-      def js_path
-        @@js_path ||= "/assets/in-context-editor/2.0/app.js"
-      end
-
-      def js_path=(js_path)
-        @@js_path = js_path
-      end
-
-      def js_options
-        @@js_options ||= {}
-      end
-
-      def js_options=(js_options)
-        @@js_options = js_options
-      end
-
-      def cache_key_segments_initial
-        @@cache_key_segments_initial ||= ["simple_form"]
-      end
-
-      def cache_key_segments_initial=(cache_key_segments_initial=[])
-        @@cache_key_segments_initial = cache_key_segments_initial
-      end
-
-      def cache_lifetime
-        @@cache_lifetime ||= 300
-      end
-
-      def cache_lifetime=(cache_lifetime)
-        @@cache_lifetime = cache_lifetime
-      end
-
-      def ignored_keys
-        @@ignored_keys ||= []
-      end
-
-      def ignored_keys=(ignored_keys)
-        @@ignored_keys = ignored_keys
+      def self.reset_to_defaults!
+        CONFIG_OPTIONS.each do |option, default_value|
+          send("#{option}=", default_value)
+        end
       end
 
     protected
-      def authorized_api_client
-        credentials = PhraseApp::Auth::Credentials.new(token: PhraseApp::InContextEditor.access_token, host: PhraseApp::InContextEditor.api_host, skip_ssl_verification: PhraseApp::InContextEditor.skip_ssl_verification)
-        client = PhraseApp::Client.new(credentials)
+      def self.invalidate_api_client
+        @@api_client = nil
+      end
+
+      def self.build_api_client
+        credentials = PhraseApp::Auth::Credentials.new(
+          token: @@access_token,
+          host: @@api_host,
+          skip_ssl_verification: @@skip_ssl_verification
+        )
+        PhraseApp::Client.new(credentials)
       end
     end
   end

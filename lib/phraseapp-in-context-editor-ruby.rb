@@ -88,7 +88,15 @@ module PhraseApp
     end
 
     def self.configure
-      yield(self.config)
+      yield(PhraseApp::InContextEditor::Config)
+    end
+
+    def self.with_config(config_options={}, &block)
+      original_config = self.config.dup
+      config.assign_values(config_options)
+      yield
+    ensure
+      self.config = original_config
     end
   end
 
