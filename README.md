@@ -54,18 +54,9 @@ If you don't want to use the helper but add the plain Javascript yourself, head 
 
 Restart your application to see the In-Context-Editor in action!
 
-
-### Upgrading from the old phrase gem
-
-If you're upgrading from the `phrase` gem (which is now deprecated), you will notice several changes:
-
-1. The gem no longer provides the `push`/`pull` commands. This functionality is now provided by our new [command line client](https://github.com/phrase/phraseapp-client).
-2. The gem also no longer implements it's own API client, but uses the [phraseapp-ruby gem](https://github.com/phrase/phraseapp-ruby) for API communication.
-
-
 ### OpenSSL issues
 
-Please note that outdated certificates or old versions of OpenSSL may cause connection issues, especially on Mac OSX. We recommend using Ruby 2.2.2 with OpenSSL 1.0.2d or later. If you experience OpenSSL-related errors, try the following. 
+Please note that outdated certificates or old versions of OpenSSL may cause connection issues, especially on Mac OSX. We recommend using Ruby 2.2.2 with OpenSSL 1.0.2d or later. If you experience OpenSSL-related errors, try the following.
 
 Upgrade OpenSSL using Homebrew:
 
@@ -87,7 +78,7 @@ As a workaround, you can disable SSL certificate verification in your `config/in
   config.skip_ssl_verification = true
 ```
 
-This is **not recommended** and should only be used as a temporary workaround. 
+This is **not recommended** and should only be used as a temporary workaround.
 
 
 ## Further Information
