@@ -1,5 +1,24 @@
 # Change Log
 
+## [v1.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.1.0) (2016-10-04)
+[Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.2...v1.1.0)
+
+**Closed issues:**
+
+- rails\_admin json issue with phraseapp and rails\_admin-i18n [\#16](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/16)
+- Per thread config [\#14](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/14)
+- RuntimeError: not found? [\#12](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/12)
+- Editor conflicts the angular router [\#9](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/9)
+- Edit icons missing if the enabled false by default [\#8](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/8)
+- Introduce a changelog [\#7](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/7)
+
+**Merged pull requests:**
+
+- Proper storage of config on Thread.current [\#15](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/15) ([docstun](https://github.com/docstun))
+- disable dependency loading on before as fix for rails5 [\#13](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/13) ([koljaa](https://github.com/koljaa))
+- Update LICENSE [\#11](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/11) ([sbruhns](https://github.com/sbruhns))
+- i18n set to \>= 0.6 [\#10](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/10) ([jethroo](https://github.com/jethroo))
+
 ## [v1.0.2](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.0.2) (2015-10-12)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.1...v1.0.2)
 
@@ -9,7 +28,7 @@
 
 **Merged pull requests:**
 
-- 18n delegate refactoring [\#6](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/6) ([segitty](https://github.com/segitty))
+- 18n delegate refactoring [\#6](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/6) ([koljaa](https://github.com/koljaa))
 
 ## [v1.0.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.0.1) (2015-10-07)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.0...v1.0.1)
