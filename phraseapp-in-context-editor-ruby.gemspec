@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.files = git_files
   s.test_files = s.files.grep(%r{^(spec)/})
   s.require_paths = ["lib"]
-  s.add_dependency('json', '~> 1.8')
+  s.add_dependency('json', '>= 1.8', '< 3')
   s.add_dependency('i18n', '>= 0.6')
   s.add_dependency('phraseapp-ruby', '~> 1.2.7')
   s.add_development_dependency('rspec', '~> 3.2')
