@@ -20,13 +20,30 @@ Gem::Specification.new do |s|
   s.files = git_files
   s.test_files = s.files.grep(%r{^(spec)/})
   s.require_paths = ["lib"]
-  s.add_dependency('json', '>= 1.8', '< 3')
+  if RUBY_VERSION >= '2.4'
+    s.add_dependency('json', '>= 1.8', '< 3')
+  else
+    s.add_dependency('json', '>= 1.7', '< 3')
+  end
   s.add_dependency('i18n', '>= 0.6')
-  s.add_dependency('phraseapp-ruby', '~> 1.2.7')
+  s.add_dependency('phraseapp-ruby', '~> 1.3')
   s.add_development_dependency('rspec', '~> 3.2')
   s.add_development_dependency('webmock', '~> 1.21')
   s.add_development_dependency('vcr', '~> 2.9')
   s.add_development_dependency('timecop', '~> 0.7')
-  s.add_development_dependency('rails', '~> 4.2')
+  if RUBY_VERSION < '2.0'
+    s.add_development_dependency('public_suffix', '< 1.5')
+    s.add_development_dependency('octokit', '< 4')
+  end
+  if RUBY_VERSION < '2.1'
+    s.add_development_dependency('nokogiri', '< 1.7')
+    s.add_development_dependency('faraday-http-cache', '< 2')
+  end
+  if RUBY_VERSION < '2.2'
+    s.add_development_dependency('mime-types', '< 3.0') # for 1.9.3 to work
+    s.add_development_dependency('rails', '~> 4.2')
+  else
+    s.add_development_dependency('rails', '>= 4.2', '< 5.1')
+  end
   s.add_development_dependency('github_changelog_generator')
 end
