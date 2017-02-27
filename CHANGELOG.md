@@ -1,5 +1,10 @@
 # Change Log
 
+## [v1.2.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.2.0) (2017-02-24)
+[Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.1.0...v1.2.0)
+
+- Ruby 2.4.0 support with json dependency allowing json version higher than 1.7
+
 ## [v1.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.1.0) (2016-10-04)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.2...v1.1.0)
 
