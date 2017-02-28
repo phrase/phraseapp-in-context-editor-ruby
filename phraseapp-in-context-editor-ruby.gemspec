@@ -25,8 +25,8 @@ Gem::Specification.new do |s|
   else
     s.add_dependency('json', '>= 1.7', '< 3')
   end
-  s.add_dependency('i18n', '>= 0.6')
-  s.add_dependency('phraseapp-ruby', '~> 1.3')
+  s.add_dependency('i18n', '>= 0.6', '< 0.9')
+  s.add_dependency('phraseapp-ruby', '>= 1.3.3', '< 2.0')
   s.add_development_dependency('rspec', '~> 3.2')
   s.add_development_dependency('webmock', '~> 1.21')
   s.add_development_dependency('vcr', '~> 2.9')
@@ -45,5 +45,5 @@ Gem::Specification.new do |s|
   else
     s.add_development_dependency('rails', '>= 4.2', '< 5.1')
   end
-  s.add_development_dependency('github_changelog_generator')
+  s.add_development_dependency('github_changelog_generator', '~> 1.14')
 end
