@@ -13,6 +13,10 @@ module PhraseApp
         alias :dasherize :to_s
         alias :tableize :to_s
 
+        # Delegate .html_safe from accessing Delegate object as if it was a hash,
+        # but instead perform it on the resulting string
+        delegate :html_safe, to: :to_s
+
         def self.log(message)
           message = "phrase: #{message}"
           if defined?(Rails) and Rails.respond_to?(:logger)
