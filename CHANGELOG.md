@@ -1,9 +1,23 @@
 # Change Log
 
+## [v1.2.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.2.1) (2017-03-13)
+[Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.2.0...v1.2.1)
+
+**Closed issues:**
+
+- Implicit Translations [\#17](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/17)
+
+**Merged pull requests:**
+
+- Fix simple form exception [\#22](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/22) ([docstun](https://github.com/docstun))
+- Version update, Ruby 2.4.0 support because of json-dependency change  [\#20](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/20) ([fredv](https://github.com/fredv))
+
 ## [v1.2.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.2.0) (2017-02-24)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.1.0...v1.2.0)
 
-- Ruby 2.4.0 support with json dependency allowing json version higher than 1.7
+**Merged pull requests:**
+
+- Changes json dependency to json \>= 1.8 [\#18](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/18) ([fredv](https://github.com/fredv))
 
 ## [v1.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.1.0) (2016-10-04)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.2...v1.1.0)
@@ -23,6 +37,7 @@
 - disable dependency loading on before as fix for rails5 [\#13](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/13) ([koljaa](https://github.com/koljaa))
 - Update LICENSE [\#11](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/11) ([sbruhns](https://github.com/sbruhns))
 - i18n set to \>= 0.6 [\#10](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/10) ([jethroo](https://github.com/jethroo))
+- 18n delegate refactoring [\#6](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/6) ([koljaa](https://github.com/koljaa))
 
 ## [v1.0.2](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.0.2) (2015-10-12)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.1...v1.0.2)
@@ -30,10 +45,6 @@
 **Closed issues:**
 
 - Method missing error [\#5](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/5)
-
-**Merged pull requests:**
-
-- 18n delegate refactoring [\#6](https://github.com/phrase/phraseapp-in-context-editor-ruby/pull/6) ([koljaa](https://github.com/koljaa))
 
 ## [v1.0.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.0.1) (2015-10-07)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.0.0...v1.0.1)
