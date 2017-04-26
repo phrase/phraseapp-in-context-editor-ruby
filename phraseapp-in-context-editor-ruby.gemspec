@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   end
   if RUBY_VERSION < '2.1'
     s.add_development_dependency('nokogiri', '< 1.7')
-    s.add_development_dependency('faraday-http-cache', '< 2')
+    s.add_development_dependency('faraday-http-cache', '<= 2.0.0')
   end
   if RUBY_VERSION < '2.2'
     s.add_development_dependency('mime-types', '< 3.0') # for 1.9.3 to work
