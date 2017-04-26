@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('vcr', '~> 2.9')
   s.add_development_dependency('timecop', '~> 0.7')
   if RUBY_VERSION < '2.0'
-    s.add_development_dependency('public_suffix', '< 1.5')
+    s.add_development_dependency('public_suffix', '<= 2.0.5')
     s.add_development_dependency('octokit', '< 4')
   end
   if RUBY_VERSION < '2.1'
