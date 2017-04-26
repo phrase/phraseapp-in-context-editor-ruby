@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('timecop', '~> 0.7')
   if RUBY_VERSION < '2.0'
     s.add_development_dependency('public_suffix', '< 1.5')
-    s.add_development_dependency('octokit', '< 4')
+    s.add_development_dependency('octokit', '<= 4.7.0')
   end
   if RUBY_VERSION < '2.1'
     s.add_development_dependency('nokogiri', '< 1.7')
