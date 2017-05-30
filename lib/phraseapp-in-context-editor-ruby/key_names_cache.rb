@@ -46,7 +46,7 @@ module PhraseApp
       end
 
       def cache
-        Thread.current[:phraseapp_cache] ||= PhraseApp::InContextEditor::Cache.new
+        RequestStore.store[:phraseapp_cache] ||= PhraseApp::InContextEditor::Cache.new
       end
     end
   end
