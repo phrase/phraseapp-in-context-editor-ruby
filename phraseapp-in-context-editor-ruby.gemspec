@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency('phraseapp-ruby', '~> 1.3')
   s.add_dependency('request_store', '~> 1.3')
   s.add_development_dependency('rspec', '~> 3.2')
-  s.add_development_dependency('webmock', '~> 1.21')
+  s.add_development_dependency('webmock', '~> 3.0')
   s.add_development_dependency('vcr', '~> 2.9')
   s.add_development_dependency('timecop', '~> 0.7')
   if RUBY_VERSION < '2.0'
