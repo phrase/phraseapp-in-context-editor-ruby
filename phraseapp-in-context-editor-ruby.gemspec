@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
     s.add_development_dependency('octokit', '< 4')
   end
   if RUBY_VERSION < '2.1'
-    s.add_development_dependency('nokogiri', '< 1.7')
+    s.add_development_dependency('nokogiri', '<= 1.7.1')
     s.add_development_dependency('faraday-http-cache', '< 2')
   end
   if RUBY_VERSION < '2.2'
