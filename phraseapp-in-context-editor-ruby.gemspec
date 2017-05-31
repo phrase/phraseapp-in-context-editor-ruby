@@ -42,9 +42,9 @@ Gem::Specification.new do |s|
   end
   if RUBY_VERSION < '2.2'
     s.add_development_dependency('mime-types', '< 3.0') # for 1.9.3 to work
-    s.add_development_dependency('rails', '~> 4.2')
+    s.add_development_dependency('rails', '~> 5.1')
   else
-    s.add_development_dependency('rails', '>= 4.2', '< 5.1')
+    s.add_development_dependency('rails', '>= 4.2', '<= 5.1.0')
   end
   s.add_development_dependency('github_changelog_generator')
 end
