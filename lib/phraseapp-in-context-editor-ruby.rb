@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'phraseapp-ruby'
+require 'request_store'
 
 module PhraseApp
   module InContextEditor
@@ -7,11 +8,11 @@ module PhraseApp
 
     class << self
       def config
-        Thread.current[:phraseapp_config] ||= PhraseApp::InContextEditor::Config.new
+        RequestStore.store[:phraseapp_config] ||= PhraseApp::InContextEditor::Config.new
       end
 
       def config=(value)
-        Thread.current[:phraseapp_config] = value
+        RequestStore.store[:phraseapp_config] = value
       end
 
       def backend

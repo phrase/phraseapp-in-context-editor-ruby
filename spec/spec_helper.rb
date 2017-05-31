@@ -24,7 +24,7 @@ RSpec.configure do |config|
 
   config.after(:each) do |example|
     PhraseApp::InContextEditor::Config.reset_to_defaults!
-    Thread.current[:phraseapp_config] = nil
+    RequestStore.store[:phraseapp_config] = nil
   end
 end
 
