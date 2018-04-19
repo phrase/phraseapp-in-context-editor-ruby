@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.name = "phraseapp-in-context-editor-ruby"
   s.version = PhraseApp::InContextEditor::VERSION
   s.platform = Gem::Platform::RUBY
+  s.required_ruby_version = '>= 2.1'
   s.authors = ["Dynport GmbH"]
   s.email = ["info@phraseapp.com"]
   s.homepage = "https://phraseapp.com"
@@ -32,14 +33,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('webmock', '~> 1.21')
   s.add_development_dependency('vcr', '~> 2.9')
   s.add_development_dependency('timecop', '~> 0.7')
-  if RUBY_VERSION < '2.0'
-    s.add_development_dependency('public_suffix', '< 1.5')
-    s.add_development_dependency('octokit', '< 4')
-  end
-  if RUBY_VERSION < '2.1'
-    s.add_development_dependency('nokogiri', '< 1.7')
-    s.add_development_dependency('faraday-http-cache', '< 2')
-  end
   if RUBY_VERSION < '2.2'
     s.add_development_dependency('mime-types', '< 3.0') # for 1.9.3 to work
     s.add_development_dependency('rails', '~> 4.2')
