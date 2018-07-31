@@ -10,7 +10,7 @@ PhraseApp::InContextEditor.configure do |config|
 
   # You can create and manage access tokens in your profile settings
   # in Translation Center or via the Authorizations API
-  # (http://docs.phraseapp.com/api/v2/authorizations/).
+  # (https://developers.phraseapp.com/api/#authorizations).
   config.access_token = "<%= options[:access_token] %>"
 
   # Configure an array of key names that should not be handled
@@ -21,7 +21,7 @@ PhraseApp::InContextEditor.configure do |config|
   # in context of your document. However, this might result in conflicts
   # with other libraries (e.g. client-side template engines) that use a similar syntax.
   # If you encounter this problem, you might want to change this decorator pattern.
-  # More information: http://docs.phraseapp.com/guides/in-context-editor/configure/
+  # More information: https://phraseapp.com/docs/guides/in-context-editor/configure/
   # config.prefix = "{{__"
   # config.suffix = "__}}"
 end
