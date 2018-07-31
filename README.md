@@ -1,6 +1,6 @@
 # PhraseApp In-Context-Editor for Ruby #
 
-*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](http://docs.phraseapp.com/guides/in-context-editor/) to learn how to set up the In-Context-Editor with other technologies.*
+*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn how to set up the In-Context-Editor with other technologies.*
 
 [![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
@@ -8,11 +8,11 @@ PhraseApp is the translation management solution for web and mobile applications
 
 [Try out Phraseapp for free](https://phraseapp.com/signup) and start translating your app!
 
-*Note: This gem  [documentation](http://docs.phraseapp.com/guides/in-context-editor/) to learn how to install the In-Context-Editor with other technologies.*
+*Note: This gem  [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn how to install the In-Context-Editor with other technologies.*
 
 ## In-Context-Editor ###
 
-How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](http://docs.phraseapp.com/guides/in-context-editor/).
+How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://phraseapp.com/docs/guides/in-context-editor/).
 
 ## Installation
 
@@ -36,7 +36,7 @@ Next, create the initializer file by executing the Rails generator:
 
 ##### --access-token
 
-You can create and manage access tokens in your [profile settings](https://phraseapp.com/settings/oauth_access_tokens) or via the [Authorizations API](http://docs.phraseapp.com/api/v2/authorizations).
+You can create and manage access tokens in your [profile settings](https://phraseapp.com/settings/oauth_access_tokens) or via the [Authorizations API](https://developers.phraseapp.com/api/#authorizations).
 
 ##### --project-id
 
@@ -48,7 +48,7 @@ Next, add the Javascript helper to your Rails application layout file:
 
     <%= phraseapp_in_context_editor_js %>
 
-If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](http://docs.phraseapp.com/guides/in-context-editor/) to learn more.
+If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn more.
 
 ### Done!
 
@@ -82,11 +82,11 @@ This is **not recommended** and should only be used as a temporary workaround.
 
 
 ## Further Information
-* [Read the PhraseApp Documentation](http://docs.phraseapp.com/)
+* [PhraseApp Help Center](https://help.phraseapp.com/)
 * [Software Translation Management with PhraseApp](https://phraseapp.com/features)
 * [Contact us](https://phraseapp.com/contact)
 
 ## References
-* [PhraseApp API Documentation](http://docs.phraseapp.com/api/v2/)
-* [In-Context-Editor Demo](http://demo.phraseapp.com)
-* [Localization Guides and Software Translation Best Practices](http://localize-software.phraseapp.com/)
+* [PhraseApp API Documentation](https://developers.phraseapp.com/api/)
+* [In-Context-Editor Demo](https://demo.phraseapp.com)
+* [Localization Guides and Software Translation Best Practices](https://phraseapp.com/blog/)
