@@ -86,6 +86,10 @@ module PhraseApp
       def api_client
         config.api_client
       end
+
+      def branch
+        config.branch
+      end
     end
 
     def self.configure

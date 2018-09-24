@@ -18,6 +18,7 @@ module PhraseApp
         cache_key_segments_initial: ["simple_form"],
         cache_lifetime: 300,
         ignored_keys: [],
+        branch: nil,
       }.freeze
 
       CONFIG_OPTIONS_GLOBAL_ONLY = [

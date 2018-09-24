@@ -1,5 +1,9 @@
 # Change Log
 
+## [v1.4.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.4.0) (2018-09-24)
+[Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.3.0...v1.4.0)
+- Add support for branches. Change branch in config with `config.branch = "branchname"`
+
 ## [v1.3.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/tree/v1.3.0) (2018-04-18)
 [Full Changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v1.2.1...v1.3.0)
 - Remove support for Ruby < 2.1
