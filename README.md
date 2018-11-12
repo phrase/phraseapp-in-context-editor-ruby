@@ -1,6 +1,6 @@
 # PhraseApp In-Context-Editor for Ruby #
 
-*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn how to set up the In-Context-Editor with other technologies.*
+*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn how to set up the In-Context-Editor with other technologies.*
 
 [![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
@@ -8,11 +8,11 @@ PhraseApp is the translation management solution for web and mobile applications
 
 [Try out Phraseapp for free](https://phraseapp.com/signup) and start translating your app!
 
-*Note: This gem  [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn how to install the In-Context-Editor with other technologies.*
+*Note: This gem  [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn how to install the In-Context-Editor with other technologies.*
 
 ## In-Context-Editor ###
 
-How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://phraseapp.com/docs/guides/in-context-editor/).
+How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website).
 
 ## Installation
 
@@ -48,7 +48,7 @@ Next, add the Javascript helper to your Rails application layout file:
 
     <%= phraseapp_in_context_editor_js %>
 
-If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://phraseapp.com/docs/guides/in-context-editor/) to learn more.
+If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn more.
 
 ### Done!
 
