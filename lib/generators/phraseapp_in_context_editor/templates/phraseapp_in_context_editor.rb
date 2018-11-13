@@ -21,7 +21,7 @@ PhraseApp::InContextEditor.configure do |config|
   # in context of your document. However, this might result in conflicts
   # with other libraries (e.g. client-side template engines) that use a similar syntax.
   # If you encounter this problem, you might want to change this decorator pattern.
-  # More information: https://phraseapp.com/docs/guides/in-context-editor/configure/
+  # More information: https://help.phraseapp.com/phraseapp-for-developers/how-to-setup-and-configure-the-phraseapp-in-context-editor-ice/configure-in-context-editor
   # config.prefix = "{{__"
   # config.suffix = "__}}"
 end
