@@ -10,11 +10,11 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = '>= 2.1'
   s.authors = ["Dynport GmbH"]
-  s.email = ["info@phraseapp.com"]
-  s.homepage = "https://phraseapp.com"
+  s.email = ["info@phrase.com"]
+  s.homepage = "https://phrase.com"
   s.summary = %q{Translation management solution for web and mobile applications}
   s.licenses = ['MIT']
-  s.description = %q{PhraseApp In-Context-Editor allows you to edit translations directly on the website. More information: phraseapp.com}
+  s.description = %q{Phrase In-Context-Editor allows you to edit translations directly on the website. More information: phrase.com}
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project = "phraseapp-in-context-editor-ruby"
   git_files = `git ls-files | grep -v spec/`.split("\n") rescue ''
