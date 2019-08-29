@@ -10,7 +10,7 @@ module PhraseApp
         backend: PhraseApp::InContextEditor::BackendService.new,
         prefix: "{{__",
         suffix: "__}}",
-        api_host: "https://api.phraseapp.com",
+        api_host: "https://api.phrase.com",
         js_host: "phraseapp.com",
         js_use_ssl: true,
         js_path: "/assets/in-context-editor/2.0/app.js",
