@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100
+    uri: https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100
     body:
       encoding: US-ASCII
       string: ''
@@ -29,8 +29,8 @@ http_interactions:
       Etag:
       - W/"cb6fe39a35faba9d5a3cd0782900c2c5"
       Link:
-      - "<https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100>;
-        rel=first, <https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100>;
+      - "<https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100>;
+        rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/blacklisted_keys?page=1&per_page=100>;
         rel=last"
       Server:
       - Wunderscale - powered by dynport.de

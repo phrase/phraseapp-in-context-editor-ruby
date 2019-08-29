@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
+    uri: https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/search?page=1&per_page=100
     body:
       encoding: UTF-8
       string: "{\"q\":\"foo*\"}"
@@ -31,8 +31,8 @@ http_interactions:
       Etag:
       - W/"a4262531399b8ed71bab16fbd0bc267a"
       Link:
-      - "<https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
-        rel=first, <https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
+      - "<https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
+        rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
         rel=last"
       Server:
       - Wunderscale - powered by dynport.de
@@ -63,7 +63,7 @@ http_interactions:
   recorded_at: Tue, 23 Jun 2015 08:07:59 GMT
 - request:
     method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100
+    uri: https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100
     body:
       encoding: US-ASCII
       string: ''
@@ -90,8 +90,8 @@ http_interactions:
       Etag:
       - W/"3c86103d4e1bad329407493226648ba6"
       Link:
-      - "<https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100>;
-        rel=first, <https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100>;
+      - "<https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100>;
+        rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/fd533412aac028e7779c8d1767ebc1d0/translations?page=1&per_page=100>;
         rel=last"
       Server:
       - Wunderscale - powered by dynport.de
@@ -122,7 +122,7 @@ http_interactions:
   recorded_at: Tue, 23 Jun 2015 08:07:59 GMT
 - request:
     method: get
-    uri: https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100
+    uri: https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100
     body:
       encoding: US-ASCII
       string: ''
@@ -149,8 +149,8 @@ http_interactions:
       Etag:
       - W/"dbe6e043361b82547e1284c674f9b5cc"
       Link:
-      - "<https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100>;
-        rel=first, <https://api.phraseapp.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100>;
+      - "<https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100>;
+        rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100>;
         rel=last"
       Server:
       - Wunderscale - powered by dynport.de
