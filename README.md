@@ -1,18 +1,18 @@
-# PhraseApp In-Context-Editor for Ruby #
+# Phrase In-Context Editor for Ruby #
 
-*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn how to set up the In-Context-Editor with other technologies.*
+*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn how to set up the In-Context Editor with other technologies.*
 
 [![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
 
-PhraseApp is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
+Phrase is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
 
-[Try out Phraseapp for free](https://phraseapp.com/signup) and start translating your app!
+[Try out Phrase for free](https://phrase.com/signup) and start translating your app!
 
-*Note: This gem  [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn how to install the In-Context-Editor with other technologies.*
+*Note: This gem  [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn how to install the In-Context Editor with other technologies.*
 
 ## In-Context-Editor ###
 
-How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website).
+How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://help.phrase.com/help/translate-directly-on-your-website).
 
 ## Installation
 
@@ -36,7 +36,7 @@ Next, create the initializer file by executing the Rails generator:
 
 ##### --access-token
 
-You can create and manage access tokens in your [profile settings](https://phraseapp.com/settings/oauth_access_tokens) or via the [Authorizations API](https://developers.phraseapp.com/api/#authorizations).
+You can create and manage access tokens in your [profile settings](https://app.phrase.com/settings/oauth_access_tokens) or via the [Authorizations API](https://developers.phrase.com/api/#authorizations).
 
 ##### --project-id
 
@@ -48,11 +48,11 @@ Next, add the Javascript helper to your Rails application layout file:
 
     <%= phraseapp_in_context_editor_js %>
 
-If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to learn more.
+If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn more.
 
 ### Done!
 
-Restart your application to see the In-Context-Editor in action!
+Restart your application to see the In-Context Editor in action!
 
 ### OpenSSL issues
 
@@ -82,11 +82,11 @@ This is **not recommended** and should only be used as a temporary workaround.
 
 
 ## Further Information
-* [PhraseApp Help Center](https://help.phraseapp.com/)
-* [Software Translation Management with PhraseApp](https://phraseapp.com/features)
-* [Contact us](https://phraseapp.com/contact)
+* [Phrase Help Center](https://help.phrase.com/)
+* [Software Translation Management with Phrase](https://phrase.com/features)
+* [Contact us](https://phrase.com/contact)
 
 ## References
-* [PhraseApp API Documentation](https://developers.phraseapp.com/api/)
-* [In-Context-Editor Demo](https://demo.phraseapp.com)
-* [Localization Guides and Software Translation Best Practices](https://phraseapp.com/blog/)
+* [Phrase API Documentation](https://developers.phrase.com/api/)
+* [In-Context-Editor Demo](https://phrase.com/demo)
+* [Localization Guides and Software Translation Best Practices](https://phrase.com/blog/)
