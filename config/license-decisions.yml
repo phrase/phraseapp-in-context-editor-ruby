@@ -5,3 +5,27 @@
     :why: short name of project
     :versions: []
     :when: 2020-05-07 07:33:57.612101331 Z
+- - :ignore_group
+  - development
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2020-05-28 06:07:17.509402355 Z
+- - :ignore_group
+  - test
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2020-05-28 06:07:22.250180736 Z
+- - :ignore
+  - phraseapp-in-context-editor-ruby
+  - :who: Sven Dunemann
+    :why: Internal phrase library
+    :versions: []
+    :when: 2020-05-28 06:45:09.434963794 Z
+- - :ignore
+  - phraseapp-ruby
+  - :who: Sven Dunemann
+    :why: Internal phrase library
+    :versions: []
+    :when: 2020-05-28 06:46:05.492507471 Z
