@@ -1,6 +1,6 @@
 ---
 - - :name_project
-  - client
+  - ice-ruby
   - :who: Sven Dunemann
     :why: short name of project
     :versions: []
