@@ -2,7 +2,7 @@
 
 *This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn how to set up the In-Context Editor with other technologies.*
 
-[![Build Status](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby.svg)](https://travis-ci.org/phrase/phraseapp-in-context-editor-ruby)
+![Build Status](https://github.com/phrase/phraseapp-in-context-editor-ruby/workflows/Test/badge.svg)
 
 Phrase is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
 
