@@ -9,14 +9,14 @@ describe PhraseApp::InContextEditor do
       end
     end
 
-    specify { PhraseApp::InContextEditor.prefix.should eql("my prefix") }
-    specify { PhraseApp::InContextEditor.suffix.should eql("my suffix") }
+    specify { expect(PhraseApp::InContextEditor.prefix).to eql("my prefix") }
+    specify { expect(PhraseApp::InContextEditor.suffix).to eql("my suffix") }
   end
 
   describe "#self.with_config(config_options={}, &block)" do
     it "should allow to set a config that is only present in a given block" do
       PhraseApp::InContextEditor.config.project_id = "old-project-id"
-      PhraseApp::InContextEditor.project_id.should eql "old-project-id"
+      expect(PhraseApp::InContextEditor.project_id).to eql "old-project-id"
       project_id_1 = nil
       project_id_2 = nil
       PhraseApp::InContextEditor.with_config(project_id: "my-new-project-id") do
@@ -27,10 +27,9 @@ describe PhraseApp::InContextEditor do
         project_id_1 = PhraseApp::InContextEditor.project_id
       end
 
-      project_id_1.should eql "my-new-project-id"
-      project_id_2.should eql "my-newest-project-id"
-
-      PhraseApp::InContextEditor.project_id.should eql "old-project-id"
+      expect(project_id_1).to eql "my-new-project-id"
+      expect(project_id_2).to eql "my-newest-project-id"
+      expect(PhraseApp::InContextEditor.project_id).to eql "old-project-id"
     end
   end
 end

@@ -14,6 +14,6 @@ describe PhraseApp::InContextEditor::HashFlattener do
     let(:hash) { {"foo" => "bar"} }
     let(:escape) { "." }
 
-    it { should eql [:foo] }
+    it { is_expected.to eql [:foo] }
   end
 end

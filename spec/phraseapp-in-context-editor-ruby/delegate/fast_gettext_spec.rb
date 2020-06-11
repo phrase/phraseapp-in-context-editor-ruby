@@ -6,7 +6,7 @@ require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
 
 describe PhraseApp::InContextEditor::Delegate::FastGettext do
   before(:each) do
-    PhraseApp::InContextEditor::Delegate::FastGettext.stub(:log)
+    allow(PhraseApp::InContextEditor::Delegate::FastGettext).to receive(:log)
   end
 
   describe "#to_s" do
@@ -21,21 +21,21 @@ describe PhraseApp::InContextEditor::Delegate::FastGettext do
       let(:method) { :_ }
       let(:args) { "lorem ipsum" }
 
-      it { should eql("{{__phrase_lorem ipsum__}}")}
+      it { is_expected.to eql("{{__phrase_lorem ipsum__}}")}
     end
 
     context "n_" do
       let(:method) { :n_ }
       let(:args) { ["lorem ipsum singular", "lorem ipsum plural"] }
 
-      it { should eql("{{__phrase_lorem ipsum singular__}}") }
+      it { is_expected.to eql("{{__phrase_lorem ipsum singular__}}") }
     end
 
     context "s_" do
       let(:method) { :s_ }
       let(:args) { "lorem ipsum namespace" }
 
-      it { should eql("{{__phrase_lorem ipsum namespace__}}")}
+      it { is_expected.to eql("{{__phrase_lorem ipsum namespace__}}")}
     end
   end
 
@@ -47,29 +47,29 @@ describe PhraseApp::InContextEditor::Delegate::FastGettext do
       let(:method) { :_ }
       let(:args) { ["lorem ipsum"] }
 
-      it { should == {msgid: "lorem ipsum"} }
+      it { is_expected.to eql({msgid: "lorem ipsum"}) }
     end
 
     context "n_" do
       let(:method) { :n_ }
       let(:args) { ["lorem ipsum singular", "lorem ipsum plural", 99] }
 
-      it { should == {msgid: "lorem ipsum singular", msgid_plural: "lorem ipsum plural", count: 99} }
+      it { is_expected.to eql({msgid: "lorem ipsum singular", msgid_plural: "lorem ipsum plural", count: 99}) }
     end
 
     context "s_" do
       let(:method) { :s_ }
       let(:args) { ["lorem|lorem ipsum namespace"] }
 
-      it { should == {msgid: "lorem|lorem ipsum namespace"} }
+      it { is_expected.to eql({msgid: "lorem|lorem ipsum namespace"}) }
     end
 
     context "unknown method" do
       let(:method) { :foo_ }
       let(:args) { [] }
 
-      it { should == {} }
-      specify { PhraseApp::InContextEditor::Delegate::FastGettext.should_receive(:log).with(/unsupported/i); subject; }
+      it { is_expected.to eql({}) }
+      specify { expect(PhraseApp::InContextEditor::Delegate::FastGettext).to receive(:log).with(/unsupported/i); subject; }
     end
   end
 end
