@@ -5,7 +5,7 @@ require 'phraseapp-in-context-editor-ruby/delegate/i18n_delegate'
 describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
   let(:key) { "foo.bar" }
   let(:options) { {} }
-  let(:original_args) { stub }
+  let(:original_args) { double }
   let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
 
   subject { delegate }
@@ -14,47 +14,47 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
     let(:key) { "foo.bar" }
     subject { delegate.to_s }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_foo.bar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_foo.bar__}}") }
   end
 
   describe "#camelize" do
     subject { delegate.camelize }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_foo.bar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_foo.bar__}}") }
   end
 
   describe "#underscore" do
     let(:key) { "FooBar" }
     subject { delegate.underscore }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_FooBar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_FooBar__}}") }
   end
 
   describe "#classify" do
     let(:key) { "foo_bar" }
     subject { delegate.classify }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_foo_bar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_foo_bar__}}") }
   end
 
   describe "#dasherize" do
     let(:key) { "foo_bar" }
     subject { delegate.dasherize }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_foo_bar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_foo_bar__}}") }
   end
 
   describe "#tableize" do
     let(:key) { "foo-bar" }
     subject { delegate.tableize }
 
-    it { should be_a String }
-    it { should eql("{{__phrase_foo-bar__}}") }
+    it { is_expected.to be_a String }
+    it { is_expected.to eql("{{__phrase_foo-bar__}}") }
   end
 
   describe "missing methods" do
@@ -62,8 +62,8 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
     let(:i18n_translation) { [] }
 
     before(:each) do
-      PhraseApp::InContextEditor::Delegate::Base.stub(:log)
-      I18n.stub(:translate_without_phraseapp).and_return("i18n_translation")
+      allow(PhraseApp::InContextEditor::Delegate::Base).to receive(:log)
+      allow(I18n).to receive(:translate_without_phraseapp).and_return("i18n_translation")
     end
 
     context "translation is a string", vcr: {cassette_name: "translation is a string", match_requests_on: [:method, :uri, :body]} do
@@ -71,27 +71,27 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
 
       context "#each |key,value|" do
         subject { delegate.each { |key,value| } }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
 
       context "#each |key|" do
         subject { delegate.each { |key| } }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
 
       context "#keys" do
         subject { delegate.keys }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
 
       context "#map" do
         subject { delegate.map { |i| } }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
 
       context "#to_ary" do
         subject { delegate.to_ary }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
     end
 
@@ -100,27 +100,27 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
 
       context "#each |key,value|" do
         subject { result = nil; delegate.each { |key,value| result = [key, value] }; result }
-        it { should == [:def, "def ipsum"] }
+        it { is_expected.to eql [:def, "def ipsum"] }
       end
 
       context "#each |key|" do
         subject { result = nil; delegate.each { |key| result = key }; result }
-        it { should == [:def, "def ipsum"] }
+        it { is_expected.to eql [:def, "def ipsum"] }
       end
 
       context "#keys" do
         subject { delegate.keys }
-        it { should == [:baz, :def] }
+        it { is_expected.to eql [:baz, :def] }
       end
 
       context "#map" do
         subject { result = nil; delegate.map { |n| result = n }; result }
-        it { should == [:def, "def ipsum"] }
+        it { is_expected.to eql [:def, "def ipsum"] }
       end
 
       context "#to_ary" do
         subject { delegate.to_ary }
-        specify { lambda { subject }.should raise_error NoMethodError }
+        specify { expect { subject }.to raise_error NoMethodError }
       end
     end
 
@@ -129,25 +129,25 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
 
       context "#each |key,value|" do
         subject { result = nil; delegate.each { |key,value| result = [key, value] }; result }
-        it { should == [:other, "more keys"] }
+        it { is_expected.to eql [:other, "more keys"] }
       end
     end
   end
 
   describe "#decorated_key_name" do
     it "should include the phrase prefix" do
-      PhraseApp::InContextEditor.stub(:prefix).and_return("??")
-      subject.send(:decorated_key_name).start_with?("??").should be_truthy
+      allow(PhraseApp::InContextEditor).to receive(:prefix).and_return("??")
+      expect(subject.send(:decorated_key_name).start_with?("??")).to be_truthy
     end
 
     it "should include the phrase suffix" do
-      PhraseApp::InContextEditor.stub(:suffix).and_return("!!")
-      subject.send(:decorated_key_name).end_with?("!!").should be_truthy
+      allow(PhraseApp::InContextEditor).to receive(:suffix).and_return("!!")
+      expect(subject.send(:decorated_key_name).end_with?("!!")).to be_truthy
     end
 
     it "should include the phrase display key" do
       subject.display_key = "my.key"
-      subject.send(:decorated_key_name).should include "my.key"
+      expect(subject.send(:decorated_key_name)).to include "my.key"
     end
   end
 end

@@ -8,7 +8,7 @@ describe PhraseApp::InContextEditor::Cache do
   let(:cache_key) { :foo }
 
   before(:each) do
-    PhraseApp::InContextEditor.stub(:cache_lifetime).and_return(300)
+    allow(PhraseApp::InContextEditor).to receive(:cache_lifetime).and_return(300)
   end
 
   subject { cache }
@@ -16,7 +16,7 @@ describe PhraseApp::InContextEditor::Cache do
   describe "#initialize" do
     subject { PhraseApp::InContextEditor::Cache.new(lifetime: 999) }
 
-    it { subject.lifetime.should == 999 }
+    it { expect(subject.lifetime).to eql 999 }
   end
 
   describe "#cached?(cache_key)" do
@@ -35,7 +35,7 @@ describe PhraseApp::InContextEditor::Cache do
         end
       end
 
-      it { should be_truthy }
+      it { is_expected.to be_truthy }
 
       context "the entry has expired" do
         before(:each) do
@@ -44,12 +44,12 @@ describe PhraseApp::InContextEditor::Cache do
           end
         end
 
-        it { should be_falsey }
+        it { is_expected.to be_falsey }
       end
     end
 
     context "no entry for that key exists" do
-      it { should be_falsey }
+      it { is_expected.to be_falsey }
     end
   end
 
@@ -60,7 +60,7 @@ describe PhraseApp::InContextEditor::Cache do
       cache.set(cache_key, "bar")
     end
 
-    it { should == "bar" }
+    it { is_expected.to eql "bar" }
   end
 
   describe "#set(cache_key, value)" do
@@ -70,6 +70,6 @@ describe PhraseApp::InContextEditor::Cache do
       cache.set(cache_key, "bar")
     end
 
-    it { should == "bar" }
+    it { is_expected.to eql "bar" }
   end
 end

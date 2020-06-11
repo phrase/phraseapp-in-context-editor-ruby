@@ -7,6 +7,6 @@ describe PhraseApp::InContextEditor::Delegate do
   describe PhraseApp::InContextEditor::Delegate::Base do
     subject { PhraseApp::InContextEditor::Delegate::Base.new }
 
-    it { should be_a_kind_of String }
+    it { is_expected.to be_a_kind_of String }
   end
 end

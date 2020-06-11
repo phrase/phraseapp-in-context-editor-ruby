@@ -19,22 +19,22 @@ describe PhraseApp::InContextEditor::KeyNamesCache do
     context "api returned a string" do
       let(:initial_segments) { ["foo"] }
 
-      it { should include("foo") }
+      it { is_expected.to include("foo") }
     end
 
     context "api returned a hash" do
       #{"bar" => "lorem"}
       let(:initial_segments) { ["bar"] }
 
-      it { should include("bar.foo") }
+      it { is_expected.to include("bar.foo") }
     end
 
     context "api returned a nested hash" do
       #{"bar" => {"baz" => "ipsum", "def" => "lorem"}}
       let(:initial_segments) { ["nested"] }
 
-      it { should include("nested.bar.baz") }
-      it { should include("nested.bar.def") }
+      it { is_expected.to include("nested.bar.baz") }
+      it { is_expected.to include("nested.bar.def") }
     end
   end
 
