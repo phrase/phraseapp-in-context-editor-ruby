@@ -35,7 +35,7 @@ http_interactions:
         rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys?page=1&per_page=100>;
         rel=last"
       Server:
-      - Wunderscale - powered by dynport.de
+      - Wunderscale
       Set-Cookie:
       - language=en; path=/; expires=Sat, 23 Jun 2035 08:06:46 -0000; HttpOnly; secure
       Status:
@@ -94,7 +94,7 @@ http_interactions:
         rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/7309b6325bd2bbadbe579f06965aadec/translations?page=1&per_page=100>;
         rel=last"
       Server:
-      - Wunderscale - powered by dynport.de
+      - Wunderscale
       Set-Cookie:
       - language=en; path=/; expires=Sat, 23 Jun 2035 08:06:46 -0000; HttpOnly; secure
       Status:
@@ -153,7 +153,7 @@ http_interactions:
         rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/locales?page=1&per_page=100>;
         rel=last"
       Server:
-      - Wunderscale - powered by dynport.de
+      - Wunderscale
       Set-Cookie:
       - language=en; path=/; expires=Sat, 23 Jun 2035 08:06:47 -0000; HttpOnly; secure
       Status:
@@ -212,7 +212,7 @@ http_interactions:
         rel=first, <https://api.phrase.com/api/v2/projects/49463eeb0470aadbd3816d4755e9f5ed/keys/7a104fa42738dfa1b9e79cf6379e81be/translations?page=1&per_page=100>;
         rel=last"
       Server:
-      - Wunderscale - powered by dynport.de
+      - Wunderscale
       Set-Cookie:
       - language=en; path=/; expires=Sat, 23 Jun 2035 08:06:47 -0000; HttpOnly; secure
       Status:
