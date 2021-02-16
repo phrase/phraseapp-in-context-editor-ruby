@@ -14,7 +14,27 @@ module PhraseApp
 
       def translate(*args)
         if to_be_translated_without_phraseapp?(args)
-          I18n.translate_without_phraseapp(*args)
+          # *Ruby 2.7+ keyword arguments warning*
+          #
+          # This method uses keyword arguments.
+          # There is a breaking change in ruby that produces warning with ruby 2.7 and won't work as expected with ruby 3.0
+          # The "hash" parameter must be passed as keyword argument.
+          #
+          # Good:
+          #  I18n.t(:salutation, :gender => 'w', :name => 'Smith')
+          #  I18n.t(:salutation, **{ :gender => 'w', :name => 'Smith' })
+          #  I18n.t(:salutation, **any_hash)
+          #
+          # Bad:
+          #  I18n.t(:salutation, { :gender => 'w', :name => 'Smith' })
+          #  I18n.t(:salutation, any_hash)
+          #
+          kw_args = args[1]
+          if kw_args.present?
+            I18n.translate_without_phraseapp(args[0], **kw_args)
+          else
+            I18n.translate_without_phraseapp(args[0])
+          end
         else
           phraseapp_delegate_for(args)
         end

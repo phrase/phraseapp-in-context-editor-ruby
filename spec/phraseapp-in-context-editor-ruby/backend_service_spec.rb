@@ -134,6 +134,13 @@ describe PhraseApp::InContextEditor::BackendService do
 
           it { is_expected.to eql "translation missing: en.context.key" }
         end
+
+        context "scope array given in rails 3 style" do
+          let(:context_key_translation) { double }
+          let(:args) { [:key, **{ :scope => [:context] }] }
+
+          it { is_expected.to eql "translation missing: en.context.key" }
+        end
       end
     end
   end
