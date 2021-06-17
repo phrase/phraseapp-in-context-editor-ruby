@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@517a3b1b36b6f5727d97c46b7641767c1564b333 # pin@v1
+      - uses: ruby/setup-ruby@517a3b1b36b6f5727d97c46b7641767c1564b333 # pin@v1.73.0
         with:
           ruby-version: ${{ matrix.ruby }}
       - run: bundle install
