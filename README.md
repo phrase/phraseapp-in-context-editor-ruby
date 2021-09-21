@@ -90,3 +90,7 @@ This is **not recommended** and should only be used as a temporary workaround.
 * [Phrase API Documentation](https://developers.phrase.com/api/)
 * [In-Context-Editor Demo](https://phrase.com/demo)
 * [Localization Guides and Software Translation Best Practices](https://phrase.com/blog/)
+
+## Get help / support
+
+Please contact [support@phrase.com](mailto:support@phrase.com?subject=[GitHub]%20) and we can take more direct action toward finding a solution.
