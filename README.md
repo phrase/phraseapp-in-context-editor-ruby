@@ -54,6 +54,17 @@ If you don't want to use the helper but add the plain Javascript yourself, head 
 
 Restart your application to see the In-Context Editor in action!
 
+### Using US datacenter
+
+In the generated `phraseapp_in_context_editor.rb` add these options to enable connecting to the US datacenter.
+```
+  config.api_host = 'https://api.us.app.phrase.com'
+  config.js_options = {
+    baseUrl: 'https://us.app.phrase.com',
+    profileUrl: 'https://us.app.phrase.com/settings/profile'
+  }
+```
+
 ### OpenSSL issues
 
 Please note that outdated certificates or old versions of OpenSSL may cause connection issues, especially on Mac OSX. We recommend using Ruby 2.2.2 with OpenSSL 1.0.2d or later. If you experience OpenSSL-related errors, try the following.
