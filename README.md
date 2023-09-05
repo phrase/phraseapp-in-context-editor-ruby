@@ -34,19 +34,19 @@ Next, create the initializer file by executing the Rails generator:
 
     $ bundle exec rails generate phraseapp_in_context_editor:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
 
-##### --access-token
-
-You can create and manage access tokens in your [profile settings](https://app.phrase.com/settings/oauth_access_tokens) or via the [Authorizations API](https://developers.phrase.com/api/#authorizations).
-
 ##### --project-id
 
 You can find the ID of your project in your project settings in Translation Center.
+
+##### --account-id
+
+You can find the ID of your account in your account settings in Translation Center.
 
 ### Add the JavaScript helper
 
 Next, add the Javascript helper to your Rails application layout file:
 
-    <%= phraseapp_in_context_editor_js %>
+<%= phraseapp_in_context_editor_js %>
 
 If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn more.
 
@@ -58,11 +58,7 @@ Restart your application to see the In-Context Editor in action!
 
 In the generated `phraseapp_in_context_editor.rb` add these options to enable connecting to the US datacenter.
 ```
-  config.api_host = 'https://api.us.app.phrase.com'
-  config.js_options = {
-    baseUrl: 'https://us.app.phrase.com',
-    profileUrl: 'https://us.app.phrase.com/settings/profile'
-  }
+  config.datacenter = 'us'
 ```
 
 ### OpenSSL issues
