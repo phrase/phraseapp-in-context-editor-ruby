@@ -1,6 +1,4 @@
-# -*- encoding : utf-8 -*-
-
-require 'phraseapp-in-context-editor-ruby/delegate'
+require_relative "../delegate"
 
 module PhraseApp
   module InContextEditor
@@ -12,20 +10,20 @@ module PhraseApp
           @display_key = params[:msgid]
         end
 
-      private
+        private
+
         def params_from_args(args)
-          params = case @method
-            when :_
-              {msgid: args.first}
-            when :n_
-              {msgid: args.first, msgid_plural: args[1], count: args.last}
-            when :s_
-              {msgid: args.first}
-            else
-              self.class.log("Unsupported FastGettext method #{@method}")
-              {}
+          case @method
+          when :_
+            {msgid: args.first}
+          when :n_
+            {msgid: args.first, msgid_plural: args[1], count: args.last}
+          when :s_
+            {msgid: args.first}
+          else
+            self.class.log("Unsupported FastGettext method #{@method}")
+            {}
           end
-          params
         end
       end
     end

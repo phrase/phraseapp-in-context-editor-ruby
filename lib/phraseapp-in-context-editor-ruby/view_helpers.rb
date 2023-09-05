@@ -1,35 +1,41 @@
-require 'json'
+require "json"
 
 module PhraseApp
   module InContextEditor
     module ViewHelpers
-      def phraseapp_in_context_editor_js(opts={})
+      def load_in_context_editor(opts = {})
         return "" unless PhraseApp::InContextEditor.enabled?
 
         # stringify to reduce possible errors when passing symbols
-        js_default_options = PhraseApp::InContextEditor.js_options.inject({}) { |conf, (k,v)| conf[k.to_s] = v; conf}
-        opts = opts.nil? ? {} : opts.inject({}) { |conf, (k,v)| conf[k.to_s] = v; conf}
+        opts = opts.nil? ? {} : opts.each_with_object({}) { |(k, v), conf|
+                                  conf[k.to_s] = v
+                                }
 
         # js options
         configuration = {
-          'projectId' => PhraseApp::InContextEditor.project_id,
-          'prefix' => PhraseApp::InContextEditor.prefix,
-          'suffix' => PhraseApp::InContextEditor.suffix,
-          'apiBaseUrl' => "#{PhraseApp::InContextEditor.api_host}/api/v2",
-        }.merge(js_default_options).merge(opts)
+          "projectId" => PhraseApp::InContextEditor.project_id,
+          "accountId" => PhraseApp::InContextEditor.account_id,
+          "datacenter" => PhraseApp::InContextEditor.datacenter,
+          "prefix" => PhraseApp::InContextEditor.prefix,
+          "suffix" => PhraseApp::InContextEditor.suffix
+        }.merge(opts)
 
-        snippet = <<-eos
-          <script>
-            window.PHRASEAPP_CONFIG = #{configuration.to_json};
-            (function() {
-              var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
-              phraseapp.src = ['#{PhraseApp::InContextEditor.js_use_ssl ? 'https' : 'http'}://', '#{PhraseApp::InContextEditor.js_host}#{PhraseApp::InContextEditor.js_path}?', new Date().getTime()].join('');
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
-            })();
-          </script>
-        eos
+        snippet = <<-EOS
+        <script>
+          window.PHRASEAPP_CONFIG = #{configuration.to_json};
+          (function() {
+            let phraseapp = document.createElement('script');
+            phraseapp.type = 'module';
+            phraseapp.async = true;
+            phraseapp.src = "https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js";
+            let script = document.getElementsByTagName('script')[0];
+            script.parentNode.insertBefore(phraseapp, script);
+          })();
+        </script>
+        EOS
         snippet.respond_to?(:html_safe) ? snippet.html_safe : snippet
       end
+      alias_method :phraseapp_in_context_editor_js, :load_in_context_editor
     end
   end
 end

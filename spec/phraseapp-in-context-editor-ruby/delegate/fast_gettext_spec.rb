@@ -1,8 +1,8 @@
-require 'spec_helper'
+require "spec_helper"
 
-require 'phraseapp-in-context-editor-ruby'
-require 'phraseapp-in-context-editor-ruby/delegate'
-require 'phraseapp-in-context-editor-ruby/adapters/fast_gettext'
+require "phraseapp-in-context-editor-ruby"
+require "phraseapp-in-context-editor-ruby/delegate"
+require "phraseapp-in-context-editor-ruby/adapters/fast_gettext"
 
 describe PhraseApp::InContextEditor::Delegate::FastGettext do
   before(:each) do
@@ -21,7 +21,7 @@ describe PhraseApp::InContextEditor::Delegate::FastGettext do
       let(:method) { :_ }
       let(:args) { "lorem ipsum" }
 
-      it { is_expected.to eql("{{__phrase_lorem ipsum__}}")}
+      it { is_expected.to eql("{{__phrase_lorem ipsum__}}") }
     end
 
     context "n_" do
@@ -35,7 +35,7 @@ describe PhraseApp::InContextEditor::Delegate::FastGettext do
       let(:method) { :s_ }
       let(:args) { "lorem ipsum namespace" }
 
-      it { is_expected.to eql("{{__phrase_lorem ipsum namespace__}}")}
+      it { is_expected.to eql("{{__phrase_lorem ipsum namespace__}}") }
     end
   end
 
@@ -69,7 +69,10 @@ describe PhraseApp::InContextEditor::Delegate::FastGettext do
       let(:args) { [] }
 
       it { is_expected.to eql({}) }
-      specify { expect(PhraseApp::InContextEditor::Delegate::FastGettext).to receive(:log).with(/unsupported/i); subject; }
+      specify {
+        expect(PhraseApp::InContextEditor::Delegate::FastGettext).to receive(:log).with(/unsupported/i)
+        subject
+      }
     end
   end
 end

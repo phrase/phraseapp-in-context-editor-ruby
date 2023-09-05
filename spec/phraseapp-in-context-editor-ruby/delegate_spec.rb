@@ -1,7 +1,7 @@
-require 'spec_helper'
+require "spec_helper"
 
-require 'phraseapp-in-context-editor-ruby'
-require 'phraseapp-in-context-editor-ruby/delegate'
+require "phraseapp-in-context-editor-ruby"
+require "phraseapp-in-context-editor-ruby/delegate"
 
 describe PhraseApp::InContextEditor::Delegate do
   describe PhraseApp::InContextEditor::Delegate::Base do
