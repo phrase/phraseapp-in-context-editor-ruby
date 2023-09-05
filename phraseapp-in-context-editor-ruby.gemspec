@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.description = "Phrase In-Context-Editor allows you to edit translations directly on the website. More information: phrase.com"
   s.required_rubygems_version = ">= 1.3.6"
-  s.rubyforge_project = "phraseapp-in-context-editor-ruby"
   git_files = begin
     `git ls-files | grep -v spec/`.split("\n")
   rescue
@@ -20,10 +19,10 @@ Gem::Specification.new do |s|
   end
   s.files = git_files
   s.require_paths = ["lib"]
-  s.add_dependency("json", ">= 2.0")
-  s.add_dependency("i18n", ">= 1.0")
-  s.add_dependency("request_store", ">= 1.2")
-  s.add_development_dependency("rspec", ">= 3.0")
-  s.add_development_dependency("rails", ">= 7.0")
-  s.add_development_dependency("github_changelog_generator")
+  s.add_dependency("json", "~> 2.0")
+  s.add_dependency("i18n", "~> 1.0")
+  s.add_dependency("request_store", "~> 1.2")
+  s.add_development_dependency("rspec", "~> 3.0")
+  s.add_development_dependency("rails", "~> 7.0")
+  s.add_development_dependency("github_changelog_generator", "~> 1.16")
 end
