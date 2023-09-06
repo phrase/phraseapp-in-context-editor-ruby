@@ -22,3 +22,4 @@ test/version_tmp
 /phrase
 .rspec
 /locales
+node_modules
