@@ -57,45 +57,6 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
     it { is_expected.to eql("{{__phrase_foo-bar__}}") }
   end
 
-  # describe "missing methods" do
-  #   let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
-  #   let(:i18n_translation) { [] }
-
-  #   before(:each) do
-  #     allow(PhraseApp::InContextEditor::Delegate::Base).to receive(:log)
-  #     allow(I18n).to receive(:translate_without_phraseapp).and_return("i18n_translation")
-  #   end
-
-  #   context "translation is a string", vcr: {cassette_name: "translation is a string", match_requests_on: [:method, :uri, :body]} do
-  #     let(:key) { "foo" }
-
-  #     context "#each |key,value|" do
-  #       subject { delegate.each { |key, value| } }
-  #       specify { expect { subject }.to raise_error NoMethodError }
-  #     end
-
-  #     context "#each |key|" do
-  #       subject { delegate.each { |key| } }
-  #       specify { expect { subject }.to raise_error NoMethodError }
-  #     end
-
-  #     context "#keys" do
-  #       subject { delegate.keys }
-  #       specify { expect { subject }.to raise_error NoMethodError }
-  #     end
-
-  #     context "#map" do
-  #       subject { delegate.map { |i| } }
-  #       specify { expect { subject }.to raise_error NoMethodError }
-  #     end
-
-  #     context "#to_ary" do
-  #       subject { delegate.to_ary }
-  #       specify { expect { subject }.to raise_error NoMethodError }
-  #     end
-  #   end
-  # end
-
   describe "#decorated_key_name" do
     it "should include the phrase prefix" do
       allow(PhraseApp::InContextEditor).to receive(:prefix).and_return("??")
