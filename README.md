@@ -16,6 +16,8 @@ How awesome would it be if translators could simply browse your website and edit
 
 ## Installation
 
+### NOTE: You can not use the old version of the ICE with integration versions of >2.0.0, you have to instead use 1.x.x versions as before
+
 ### Install the gem
 
 Install the gem via `gem install`:
