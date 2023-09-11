@@ -2,7 +2,7 @@
 
 ![Build status](https://github.com/phrase/phraseapp-in-context-editor-ruby/workflows/Test/badge.svg)
 
-**phraseapp-in-context-editor-ruby** is the official library for integrating [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with [i18n](https://github.com/ruby-i18n/i18n) in your React application.
+**phraseapp-in-context-editor-ruby** is the official library for integrating [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with [i18n](https://github.com/ruby-i18n/i18n) in your Ruby application.
 
 ## :scroll: Documentation
 
