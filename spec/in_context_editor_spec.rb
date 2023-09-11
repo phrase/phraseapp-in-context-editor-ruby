@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe PhraseApp::InContextEditor do
   describe "self.configure" do

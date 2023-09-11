@@ -1,107 +1,122 @@
-# Phrase In-Context Editor for Ruby #
+# phraseapp-in-context-editor-ruby
 
-*This Ruby gem is for use with Ruby (Rails, Sinatra) applications only. Check out the [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn how to set up the In-Context Editor with other technologies.*
+![Build status](https://github.com/phrase/phraseapp-in-context-editor-ruby/workflows/Test/badge.svg)
 
-![Build Status](https://github.com/phrase/phraseapp-in-context-editor-ruby/workflows/Test/badge.svg)
+**phraseapp-in-context-editor-ruby** is the official library for integrating [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with [i18n](https://github.com/ruby-i18n/i18n) in your Ruby application.
 
-Phrase is the translation management solution for web and mobile applications. Collaborate with your team, find professional translators and stay on top of the process.
+## :scroll: Documentation
 
-[Try out Phrase for free](https://phrase.com/signup) and start translating your app!
+### Prerequisites
 
-*Note: This gem  [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn how to install the In-Context Editor with other technologies.*
+To use phraseapp-in-context-editor-ruby with your application you have to:
 
-## In-Context-Editor ###
+* Sign up for a Phrase account: [https://app.phrase.com/signup](https://app.phrase.com/signup)
+* Use the excellent [i18n](https://github.com/ruby-i18n/i18n) gem also used by [Rails](https://guides.rubyonrails.org/i18n.html) 
 
-How awesome would it be if translators could simply browse your website and edit text along the way? Our In-Context Editor offers just that. It provides translators with useful contextual information which improves overall translation quality. See our documentation on how to set it up: [In-Context Editor Setup](https://help.phrase.com/help/translate-directly-on-your-website).
+### Demo
 
-## Installation
+You can find a demo project in the `examples/demo` folder, just run `bundle && rails s` and head to `http://127.0.0.1:3000`
+Login via the demo credentials `demo@phrase.com` / `phrase`
 
-### Install the gem
+### Installation
 
-Install the gem via `gem install`:
+#### NOTE: You can not use the old version of the ICE with integration versions of >2.0.0, you have to instead use 1.x.x versions as before
+#### via Gem
 
-    gem install phraseapp-in-context-editor-ruby
-
-or add it to your `Gemfile` when using bundler:
-
-    gem 'phraseapp-in-context-editor-ruby'
-
-and install it:
-
-    $ bundle install
-
-Next, create the initializer file by executing the Rails generator:
-
-    $ bundle exec rails generate phraseapp_in_context_editor:install --access-token=<YOUR_TOKEN> --project-id=<YOUR_PROJECT_ID>
-
-##### --access-token
-
-You can create and manage access tokens in your [profile settings](https://app.phrase.com/settings/oauth_access_tokens) or via the [Authorizations API](https://developers.phrase.com/api/#authorizations).
-
-##### --project-id
-
-You can find the ID of your project in your project settings in Translation Center.
-
-### Add the JavaScript helper
-
-Next, add the Javascript helper to your Rails application layout file:
-
-    <%= phraseapp_in_context_editor_js %>
-
-If you don't want to use the helper but add the plain Javascript yourself, head over to our [documentation](https://help.phrase.com/help/translate-directly-on-your-website) to learn more.
-
-### Done!
-
-Restart your application to see the In-Context Editor in action!
-
-### Using US datacenter
-
-In the generated `phraseapp_in_context_editor.rb` add these options to enable connecting to the US datacenter.
+```bash
+gem install phraseapp-in-context-editor-ruby
 ```
-  config.api_host = 'https://api.us.app.phrase.com'
-  config.js_options = {
-    baseUrl: 'https://us.app.phrase.com',
-    profileUrl: 'https://us.app.phrase.com/settings/profile'
-  }
+#### via Bundler
+
+Add it to your `Gemfile`
+
+```
+gem 'phraseapp-in-context-editor-ruby
 ```
 
-### OpenSSL issues
+#### Build from source
 
-Please note that outdated certificates or old versions of OpenSSL may cause connection issues, especially on Mac OSX. We recommend using Ruby 2.2.2 with OpenSSL 1.0.2d or later. If you experience OpenSSL-related errors, try the following.
+You can also build it directly from source to get the latest and greatest:
 
-Upgrade OpenSSL using Homebrew:
-
-```shell
-$ brew upgrade openssl
-$ brew install openssl
+```bash
+bundle && gem build
 ```
 
-If you are using RVM, also run:
+#### Initialized config file
 
-```shell
-$ rvm osx-ssl-certs status all
-$ rvm osx-ssl-certs update all
-````
+Create the initializer file by executing the Rails generator:
 
-As a workaround, you can disable SSL certificate verification in your `config/initializers/phraseapp_in_context_editor.rb` by adding the following line:
+```bash
+rails generate phraseapp_in_context_editor:install --account_id=<YOUR_ACCOUNT_ID> --project-id=<YOUR_PROJECT_ID>
+```
+
+### Development
+
+```bash
+# install deps
+bundle
+```
+
+#### Configure
+
+Add the following Ruby snippet to your rails `app/views//layouts/application.html.erb`
+
+```
+<%= load_in_context_editor %>
+```
+
+And the following config to your `/config/initializers/phraseapp_in_context_editor.rb`
 
 ```ruby
-  config.skip_ssl_verification = true
+  config.enabled = true
+  config.project_id = "YOUR_PROJECT_ID"
+  config.account_id = "YOUR_ACCOUNT_ID"
+  config.datacenter = "eu"
 ```
 
-This is **not recommended** and should only be used as a temporary workaround.
+You can find the Project-ID in the Project overview in the PhraseApp Translation Center.
+You can find the Account-ID in the Organization page in the PhraseApp Translation Center.
 
+If this does not work for you, you can also integrate the [JavaScript snippet manually](https://help.phrase.com/help/integrate-in-context-editor-into-any-web-framework).
 
-## Further Information
-* [Phrase Help Center](https://help.phrase.com/)
-* [Software Translation Management with Phrase](https://phrase.com/features)
-* [Contact us](https://phrase.com/contact)
+Old version of the ICE is not available since version 2.0.0. If you still would rather use the old version, please go back to 1.x.x versions.
 
-## References
-* [Phrase API Documentation](https://developers.phrase.com/api/)
-* [In-Context-Editor Demo](https://phrase.com/demo)
-* [Localization Guides and Software Translation Best Practices](https://phrase.com/blog/)
+#### Using the US Datacenter with ICE
 
-## Get help / support
+In addition to the settings in your `config/initializers/phraseapp_in_context_editor.rb`, set the US datacenter to enable the ICE to work with the US endpoints.
+```ruby
+  config.enabled = true
+  config.project_id = "YOUR_PROJECT_ID"
+  config.account_id = "YOUR_ACCOUNT_ID"
+  config.datacenter = "us"
+```
 
-Please contact [support@phrase.com](mailto:support@phrase.com?subject=[GitHub]%20) and we can take more direct action toward finding a solution.
+### Browser support
+
+This library might not work out of the box for some older browser or IE11. We recommend to add [Babel](https://github.com/babel/babel) to the build pipeline if those browser need to be supported.
+
+### How does it work
+
+The library adds custom functionality to the `i18n` package. When `config.enabled = true` this gem modifies the outcoming values from translation functions to present a format which the ICE can read.
+
+### Test
+
+Run unit tests using jest:
+
+```bash
+rspec
+```
+
+## :white_check_mark: Commits & Pull Requests
+
+We welcome anyone who wants to contribute to our codebase, so if you notice something, feel free to open a Pull Request! However, we ask that you please use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for your commit messages and titles when opening a Pull Request.
+
+Example: `chore: Update README`
+
+## :question: Issues, Questions, Support
+
+Please use [GitHub issues](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues) to share your problem, and we will do our best to answer any questions or to support you in finding a solution.
+
+## :memo: Changelog
+
+Detailed changes for each release are documented in the [changelog](https://github.com/phrase/phraseapp-in-context-editor-ruby/releases).
