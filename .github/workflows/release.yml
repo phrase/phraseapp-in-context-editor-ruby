@@ -1,0 +1,28 @@
+name: Gem release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac
+      - uses: actions/setup-node@v5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+        with:
+          node-version: 20
+      - uses: ruby/setup-ruby@v8a45918450651f5e4784b6031db26f4b9f76b251
+        with:
+          ruby-version: '3.2' # Not needed with a .ruby-version file
+
+      - name: Install dependencies
+        run: npm install && bundle install
+
+      - name: Build and validate gem
+        run: gem build
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@75aba232a0230253df6bf4f7beb4376debf5cefb
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
