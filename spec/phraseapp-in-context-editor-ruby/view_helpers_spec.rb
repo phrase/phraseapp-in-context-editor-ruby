@@ -38,8 +38,6 @@ describe PhraseApp::InContextEditor::ViewHelpers do
       end
 
       describe "origin setting" do
-        before(:each) { PhraseApp::InContextEditor.config.origin = "__]]" }
-
         it { is_expected.to include("\"origin\":\"in-context-editor-ruby\"") }
       end
 
