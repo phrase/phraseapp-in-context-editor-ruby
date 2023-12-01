@@ -37,6 +37,12 @@ describe PhraseApp::InContextEditor::ViewHelpers do
         it { is_expected.to include("\"suffix\":\"__]]\"") }
       end
 
+      describe "origin setting" do
+        before(:each) { PhraseApp::InContextEditor.config.origin = "__]]" }
+
+        it { is_expected.to include("\"origin\":\"in-context-editor-ruby\"") }
+      end
+
       describe "overriding options" do
         let(:opts) { {prefix: "__%%"} }
         before(:each) { PhraseApp::InContextEditor.config.prefix = "__]]" }

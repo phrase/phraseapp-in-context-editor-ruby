@@ -18,6 +18,7 @@ module PhraseApp
           "datacenter" => PhraseApp::InContextEditor.datacenter,
           "prefix" => PhraseApp::InContextEditor.prefix,
           "suffix" => PhraseApp::InContextEditor.suffix
+          "origin" => PhraseApp::InContextEditor.origin
         }.merge(opts)
 
         snippet = <<-EOS

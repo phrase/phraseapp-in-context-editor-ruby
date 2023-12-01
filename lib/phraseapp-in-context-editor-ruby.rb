@@ -48,6 +48,10 @@ module PhraseApp
       def disabled?
         !config.enabled
       end
+
+      def origin
+        config.origin
+      end
     end
 
     def self.configure
