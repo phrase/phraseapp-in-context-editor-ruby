@@ -8,7 +8,8 @@ module PhraseApp
         enabled: false,
         backend: PhraseApp::InContextEditor::BackendService.new,
         prefix: "{{__",
-        suffix: "__}}"
+        suffix: "__}}",
+        origin: "in-context-editor-ruby"
       }.freeze
 
       CONFIG_OPTIONS.each do |option, default_value|
