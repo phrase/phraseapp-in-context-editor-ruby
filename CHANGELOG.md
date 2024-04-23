@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.1.0...v2.1.1) (2024-04-23)
+
+
+### Bug Fixes
+
+* Fix semantic release ([#77](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/77)) ([e7b14e4](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/e7b14e4da17b24f182d7dda227c5a4f2f135cff9))
+
 # [2.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.0.1...v2.1.0) (2024-04-23)
 
 
