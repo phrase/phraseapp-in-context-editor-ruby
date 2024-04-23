@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "phraseapp-in-context-editor-ruby"
-  s.version = "2.0.0"
+  s.version = PhraseApp::VERSION
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = ">= 3.1.0"
   s.authors = ["Phrase"]
