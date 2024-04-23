@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "./lib/phraseapp-in-context-editor-ruby/version"
+
 Gem::Specification.new do |s|
   s.name = "phraseapp-in-context-editor-ruby"
   s.version = PhraseApp::VERSION

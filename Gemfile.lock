@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    phraseapp-in-context-editor-ruby (2.0.0)
+    phraseapp-in-context-editor-ruby (2.1.0)
       i18n (~> 1.0)
       json (~> 2.0)
       request_store (~> 1.2)
