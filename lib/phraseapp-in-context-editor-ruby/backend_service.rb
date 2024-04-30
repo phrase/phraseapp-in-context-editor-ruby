@@ -9,41 +9,21 @@ module PhraseApp
         self
       end
 
-      def translate(*args)
-        if to_be_translated_without_phraseapp?(args)
-          # *Ruby 2.7+ keyword arguments warning*
-          #
-          # This method uses keyword arguments.
-          # There is a breaking change in ruby that produces warning with ruby 2.7 and won't work as expected with ruby 3.0
-          # The "hash" parameter must be passed as keyword argument.
-          #
-          # Good:
-          #  I18n.t(:salutation, :gender => 'w', :name => 'Smith')
-          #  I18n.t(:salutation, **{ :gender => 'w', :name => 'Smith' })
-          #  I18n.t(:salutation, **any_hash)
-          #
-          # Bad:
-          #  I18n.t(:salutation, { :gender => 'w', :name => 'Smith' })
-          #  I18n.t(:salutation, any_hash)
-          #
-          kw_args = args[1]
-          if kw_args.present?
-            I18n.translate_without_phraseapp(args[0], **kw_args)
-          else
-            I18n.translate_without_phraseapp(args[0])
-          end
+      def translate(...)
+        if to_be_translated_without_phraseapp?(...)
+          I18n.translate_without_phraseapp(...)
         else
-          phraseapp_delegate_for(args)
+          phraseapp_delegate_for(...)
         end
       end
 
       protected
 
-      def to_be_translated_without_phraseapp?(args)
-        PhraseApp::InContextEditor.disabled? || has_been_forced_to_resolve_with_phraseapp?(args)
+      def to_be_translated_without_phraseapp?(...)
+        PhraseApp::InContextEditor.disabled? || has_been_forced_to_resolve_with_phraseapp?(...)
       end
 
-      def has_been_forced_to_resolve_with_phraseapp?(args)
+      def has_been_forced_to_resolve_with_phraseapp?(*args)
         (args.last.is_a?(Hash) && args.last[:resolve] == false)
       end
 
@@ -51,7 +31,7 @@ module PhraseApp
         extract_normalized_key_from_args(args)
       end
 
-      def phraseapp_delegate_for(args)
+      def phraseapp_delegate_for(*args)
         key = given_key_from_args(args)
         return nil unless present?(key)
 

@@ -16,15 +16,13 @@ describe PhraseApp::InContextEditor::BackendService do
       allow(I18n).to receive(:translate_without_phraseapp).with(key_name).and_return(i18n_translation)
     end
 
-    subject { phraseapp_service.translate(*args) }
-
     context "phrase is enabled" do
       before(:each) do
         PhraseApp::InContextEditor.enabled = true
       end
 
       context "resolve: false given as argument" do
-        let(:args) { [key_name, resolve: false] }
+        subject { phraseapp_service.translate(key_name, resolve: false) }
 
         before(:each) do
           allow(I18n).to receive(:translate_without_phraseapp).with(key_name, resolve: false).and_return(i18n_translation)
@@ -34,7 +32,7 @@ describe PhraseApp::InContextEditor::BackendService do
       end
 
       context "resolve: true given as argument" do
-        let(:args) { [key_name, resolve: true] }
+        subject { phraseapp_service.translate(key_name, resolve: true) }
 
         it { is_expected.to be_a String }
         it { is_expected.to eql "{{__phrase_foo.bar__}}" }
@@ -42,19 +40,20 @@ describe PhraseApp::InContextEditor::BackendService do
 
       describe "different arguments given" do
         context "default array given", vcr: {cassette_name: "fetch list of keys filtered by fallback key names"} do
-          let(:args) { [:key, {default: [:first_fallback, :second_fallback]}] }
+          subject { phraseapp_service.translate(:key, default: [:first_fallback, :second_fallback]) }
+
           it { is_expected.to eql "{{__phrase_key__}}" }
         end
 
         context "default string given" do
-          let(:args) { [:key, {default: "first fallback"}] }
+          subject { phraseapp_service.translate(:key, default: "first fallback") }
 
           it { is_expected.to eql "{{__phrase_key__}}" }
         end
 
         context "scope array given" do
+          subject { phraseapp_service.translate(:key, scope: [:context]) }
           let(:context_key_translation) { double }
-          let(:args) { [:key, {scope: [:context]}] }
 
           it { is_expected.to eql "{{__phrase_context.key__}}" }
         end
@@ -62,7 +61,7 @@ describe PhraseApp::InContextEditor::BackendService do
     end
 
     context "phrase is disabled" do
-      let(:args) { [key_name] }
+      subject { phraseapp_service.translate(key_name) }
 
       before(:each) do
         PhraseApp::InContextEditor.enabled = false
@@ -71,7 +70,7 @@ describe PhraseApp::InContextEditor::BackendService do
       it { is_expected.to eql i18n_translation }
 
       context "given arguments other than key_name" do
-        let(:args) { [key_name, locale: :ru] }
+        subject { phraseapp_service.translate(key_name, locale: :ru) }
         let(:ru_translation) { double }
 
         before(:each) do
@@ -87,27 +86,26 @@ describe PhraseApp::InContextEditor::BackendService do
         end
 
         context "default array given" do
-          let(:args) { [:key, {default: [:first_fallback, :second_fallback]}] }
+          subject { phraseapp_service.translate(:key, default: [:first_fallback, :second_fallback]) }
 
           it { is_expected.to eql "Translation missing. Options considered were:\n- en.key\n- en.first_fallback\n- en.second_fallback" }
         end
 
         context "default string given" do
-          let(:args) { [:key, {default: "first fallback"}] }
+          subject { phraseapp_service.translate(:key, default: "first fallback") }
+
+          it { is_expected.to eql "first fallback" }
+        end
+
+        context "default string given without key" do
+          subject { phraseapp_service.translate(default: "first fallback") }
 
           it { is_expected.to eql "first fallback" }
         end
 
         context "scope array given" do
+          subject { phraseapp_service.translate(:key, scope: [:context]) }
           let(:context_key_translation) { double }
-          let(:args) { [:key, {scope: [:context]}] }
-
-          it { is_expected.to eql "Translation missing: en.context.key" }
-        end
-
-        context "scope array given in rails 3 style" do
-          let(:context_key_translation) { double }
-          let(:args) { [:key, scope: [:context]] }
 
           it { is_expected.to eql "Translation missing: en.context.key" }
         end
