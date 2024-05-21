@@ -113,6 +113,39 @@ describe PhraseApp::InContextEditor::BackendService do
     end
   end
 
+  describe "#ignored_key?" do
+    let(:key_name) { "bar" }
+    subject { phraseapp_service.send(:ignored_key?, key_name, scope: "foo") }
+
+    before do
+      PhraseApp::InContextEditor.config.ignored_keys = ignored_keys
+    end
+
+    context "exact key is ignored" do
+      let(:ignored_keys) { %w[foo.bar baz] }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "key with wildcard is ignored" do
+      let(:ignored_keys) { %w[foo.* baz] }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "no keys are ignored" do
+      let(:ignored_keys) { [] }
+
+      it { is_expected.to be_falsey }
+    end
+
+    context "different keys are ignored" do
+      let(:ignored_keys) { %w[baz baz.foo bar.* foo] }
+
+      it { is_expected.to be_falsey }
+    end
+  end
+
   describe "#normalized_key" do
     subject { phraseapp_service.send(:normalized_key, args) }
 

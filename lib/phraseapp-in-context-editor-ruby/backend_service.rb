@@ -3,8 +3,6 @@ require_relative "delegate/i18n_delegate"
 module PhraseApp
   module InContextEditor
     class BackendService
-      attr_accessor :blacklisted_keys
-
       def initialize(args = {})
         self
       end
@@ -20,7 +18,14 @@ module PhraseApp
       protected
 
       def to_be_translated_without_phraseapp?(...)
-        PhraseApp::InContextEditor.disabled? || has_been_forced_to_resolve_with_phraseapp?(...)
+        PhraseApp::InContextEditor.disabled? || ignored_key?(...) || has_been_forced_to_resolve_with_phraseapp?(...)
+      end
+
+      def ignored_key?(*args)
+        key = given_key_from_args(args)
+        PhraseApp::InContextEditor.ignored_keys.any? do |ignored_key|
+          key.to_s[/\A#{ignored_key.gsub("*", ".*")}\Z/]
+        end
       end
 
       def has_been_forced_to_resolve_with_phraseapp?(*args)

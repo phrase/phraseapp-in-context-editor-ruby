@@ -9,6 +9,10 @@ PhraseApp::InContextEditor.configure do |config|
   config.account_id = "<%= options[:account_id] %>"
   config.datacenter = "eu"
 
+  # Configure an array of key names that should not be handled
+  # by the In-Context-Editor.
+  # config.ignored_keys = ["number.*", "foo.bar"]
+
   # Phrase uses decorators to generate a unique identification key
   # in context of your document. However, this might result in conflicts
   # with other libraries (e.g. client-side template engines) that use a similar syntax.
