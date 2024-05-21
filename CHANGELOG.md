@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.1.1...v2.1.2) (2024-05-21)
+
+
+### Bug Fixes
+
+* Ruby 3.0 keyword argument error when ICE is enabled ([#79](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/79)) ([d0efad8](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/d0efad859b83b7ac78873e012aafcac2d1856481))
+
 ## [2.1.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.1.0...v2.1.1) (2024-04-23)
 
 
