@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.1.2...v3.0.0) (2024-05-21)
+
+
+* BREAKING CHANGE: Use ruby 2.7 'Forward all arguments' syntax: (...) to forward arguments (#78) ([99ae28e](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/99ae28e2f6fea0ba2ba0eec6eca54a043e21d121)), closes [#78](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/78)
+
+
+### BREAKING CHANGES
+
+* Hash arguments will throw an error. Keyword arguments must be used instead.
+
 ## [2.1.2](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v2.1.1...v2.1.2) (2024-05-21)
 
 
