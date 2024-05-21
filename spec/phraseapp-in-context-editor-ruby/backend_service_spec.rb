@@ -128,4 +128,53 @@ describe PhraseApp::InContextEditor::BackendService do
       it { is_expected.to eql "my.key" }
     end
   end
+
+  describe "delegation of methods on translatable values" do
+    let(:key) { "foo" }
+    let(:options) { {} }
+    let(:delegate) { phraseapp_service.translate(key, **options)}
+
+    before(:each) do
+      PhraseApp::InContextEditor.enabled = true
+    end
+
+    context "string method to decorated_key_name" do
+      subject { delegate.include? "phrase_foo" }
+      let(:method_return) { true }
+
+      before(:each) do
+        expect(I18n).not_to receive(:translate_without_phraseapp)
+      end
+
+      it { is_expected.to eql method_return }
+
+      context "with an option set" do
+        let(:options) { {locale: :en} }
+
+        it { is_expected.to eql method_return }
+      end
+    end
+
+    context "non-string method to original translation" do
+      subject { delegate.value? 3 }
+
+      let(:i18n_translation) { {baz: 3} }
+      let(:scoped) { "bar" }
+      let(:i18n_translation_scoped) { {baz: 5} }
+
+      before(:each) do
+        I18n.backend.store_translations(:en, {key => i18n_translation})
+        I18n.backend.store_translations(:en, {scoped => {key => i18n_translation_scoped}})
+        expect(I18n).to receive(:translate_without_phraseapp).and_call_original
+      end
+
+      it { is_expected.to eql true }
+
+      context "with an option set" do
+        let(:options) { {scope: scoped} }
+
+        it { is_expected.to eql false }
+      end
+    end
+  end
 end

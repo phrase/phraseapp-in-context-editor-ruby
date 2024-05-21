@@ -3,12 +3,7 @@ require "phraseapp-in-context-editor-ruby"
 require "phraseapp-in-context-editor-ruby/delegate/i18n_delegate"
 
 describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
-  let(:key) { "foo.bar" }
-  let(:options) { {} }
-  let(:original_args) { double }
   let(:delegate) { PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key) }
-
-  subject { delegate }
 
   describe "#to_s" do
     let(:key) { "foo.bar" }
@@ -19,6 +14,7 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
   end
 
   describe "#camelize" do
+    let(:key) { "foo.bar" }
     subject { delegate.camelize }
 
     it { is_expected.to be_a String }
@@ -58,6 +54,9 @@ describe PhraseApp::InContextEditor::Delegate::I18nDelegate do
   end
 
   describe "#decorated_key_name" do
+    let(:key) { "foo.bar" }
+    subject { delegate }
+
     it "should include the phrase prefix" do
       allow(PhraseApp::InContextEditor).to receive(:prefix).and_return("??")
       expect(subject.send(:decorated_key_name).start_with?("??")).to be_truthy

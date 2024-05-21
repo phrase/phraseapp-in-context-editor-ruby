@@ -55,7 +55,7 @@ module PhraseApp
         key = given_key_from_args(args)
         return nil unless present?(key)
 
-        options = args[1].nil? ? {} : args[1]
+        options = options_from_args(args)
         PhraseApp::InContextEditor::Delegate::I18nDelegate.new(key, options, args)
       end
 
