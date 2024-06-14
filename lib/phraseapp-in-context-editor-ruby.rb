@@ -37,6 +37,10 @@ module PhraseApp
         config.datacenter
       end
 
+      def ignored_keys
+        config.ignored_keys
+      end
+
       def enabled=(value)
         config.enabled = value
       end

@@ -9,7 +9,8 @@ module PhraseApp
         backend: PhraseApp::InContextEditor::BackendService.new,
         prefix: "{{__",
         suffix: "__}}",
-        origin: "in-context-editor-ruby"
+        origin: "in-context-editor-ruby",
+        ignored_keys: []
       }.freeze
 
       CONFIG_OPTIONS.each do |option, default_value|
