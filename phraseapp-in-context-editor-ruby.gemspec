@@ -4,7 +4,7 @@ require "./lib/phraseapp-in-context-editor-ruby/version"
 
 Gem::Specification.new do |s|
   s.name = "phraseapp-in-context-editor-ruby"
-  s.version = PhraseApp::VERSION
+  s.version = PhraseappInContextEditor::VERSION
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = ">= 3.1.0"
   s.authors = ["Phrase"]
