@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.0.1...v3.1.0) (2024-06-14)
+
+
+### Features
+
+* Add config option to ignore keys ([#82](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/82)) ([657b9f3](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/657b9f3ebce1ca2a364af1b9b84b0b28ee733983))
+
 ## [3.0.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.0.0...v3.0.1) (2024-06-14)
 
 
