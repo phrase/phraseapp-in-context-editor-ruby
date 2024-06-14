@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.1.0...v3.1.1) (2024-06-14)
+
+
+### Bug Fixes
+
+* Adjust workflow permissions so it can bump version ([#85](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/85)) ([42e00ed](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/42e00ed821fb594415a1b12d3c3e3ac2c24f951f))
+
 # [3.1.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.0.1...v3.1.0) (2024-06-14)
 
 
