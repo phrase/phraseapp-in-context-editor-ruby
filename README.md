@@ -104,7 +104,7 @@ The content_security_policy.rb has to have `:strict_dynamic` for `policy.script_
   policy.style_src :self, :https, :unsafe_inline
 ```
 
-The `config.content_security_policy_nonce_directives = %w[script-src]` can't include `style-src` since we can't add the nonce to dynamically created style tags that our editor creates
+The `config.content_security_policy_nonce_directives = %w[script-src style-src]` can include `style-src` but this _might_ break some styling in some cases
 
 ### Browser support
 
