@@ -11,7 +11,7 @@ Rails.application.configure do
     policy.img_src :self, :https, :data
     policy.object_src :none
     policy.script_src :self, :https, :strict_dynamic
-    policy.style_src :self, :https, :unsafe_inline
+    policy.style_src :self, :https
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
   end
