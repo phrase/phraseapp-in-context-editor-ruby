@@ -10,8 +10,8 @@
 
 To use phraseapp-in-context-editor-ruby with your application you have to:
 
-* Sign up for a Phrase account: [https://app.phrase.com/signup](https://app.phrase.com/signup)
-* Use the excellent [i18n](https://github.com/ruby-i18n/i18n) gem also used by [Rails](https://guides.rubyonrails.org/i18n.html) 
+- Sign up for a Phrase account: [https://app.phrase.com/signup](https://app.phrase.com/signup)
+- Use the excellent [i18n](https://github.com/ruby-i18n/i18n) gem also used by [Rails](https://guides.rubyonrails.org/i18n.html)
 
 ### Demo
 
@@ -21,11 +21,13 @@ Login via the demo credentials `demo@phrase.com` / `phrase`
 ### Installation
 
 #### NOTE: You can not use the old version of the ICE with integration versions of >2.0.0, you have to instead use 1.x.x versions as before
+
 #### via Gem
 
 ```bash
 gem install phraseapp-in-context-editor-ruby
 ```
+
 #### via Bundler
 
 Add it to your `Gemfile`
@@ -84,12 +86,25 @@ Old version of the ICE is not available since version 2.0.0. If you still would 
 #### Using the US Datacenter with ICE
 
 In addition to the settings in your `config/initializers/phraseapp_in_context_editor.rb`, set the US datacenter to enable the ICE to work with the US endpoints.
+
 ```ruby
   config.enabled = true
   config.project_id = "YOUR_PROJECT_ID"
   config.account_id = "YOUR_ACCOUNT_ID"
   config.datacenter = "us"
 ```
+
+#### Using with CSP
+
+The script will automatically get the nonce from `content_security_policy_nonce`
+The content_security_policy.rb has to have `:strict_dynamic` for `policy.script_src` and `:unsafe_inline` for `policy.style_src`
+
+```ruby
+  policy.script_src :self, :https, :strict_dynamic
+  policy.style_src :self, :https, :unsafe_inline
+```
+
+The `config.content_security_policy_nonce_directives = %w[script-src]` can't include `style-src` since we can't add the nonce to dynamically created style tags that our editor creates
 
 ### Browser support
 
