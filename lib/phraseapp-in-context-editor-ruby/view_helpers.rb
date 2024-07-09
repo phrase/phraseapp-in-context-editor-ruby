@@ -22,7 +22,7 @@ module PhraseApp
         }.merge(opts)
 
         snippet = <<-EOS
-        <script>
+        <script nonce='#{content_security_policy_nonce}'>
           window.PHRASEAPP_CONFIG = #{configuration.to_json};
           (function() {
             let phraseapp = document.createElement('script');
