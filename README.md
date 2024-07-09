@@ -97,11 +97,11 @@ In addition to the settings in your `config/initializers/phraseapp_in_context_ed
 #### Using with CSP
 
 The script will automatically get the nonce from `content_security_policy_nonce`
-The content_security_policy.rb has to have `:strict_dynamic` for `policy.script_src` and `:unsafe_inline` for `policy.style_src`
+The content_security_policy.rb has to have `:strict_dynamic` for `policy.script_src` since we are loading more scripts dynamically because of our way of deploying
 
 ```ruby
   policy.script_src :self, :https, :strict_dynamic
-  policy.style_src :self, :https, :unsafe_inline
+  policy.style_src :self, :https
 ```
 
 The `config.content_security_policy_nonce_directives = %w[script-src style-src]` can include `style-src` but this _might_ break some styling in some cases
