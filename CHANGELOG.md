@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.1.1...v3.2.0) (2024-07-11)
+
+
+### Features
+
+* Added nonce support ([#86](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/86)) ([e7df6f7](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/e7df6f7b279c3823dd8a99f0b5d6e2d025863ca7))
+
 ## [3.1.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.1.0...v3.1.1) (2024-06-14)
 
 
