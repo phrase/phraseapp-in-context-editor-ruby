@@ -2,6 +2,10 @@ require "spec_helper"
 require "phraseapp-in-context-editor-ruby"
 require "phraseapp-in-context-editor-ruby/view_helpers"
 
+def content_security_policy_nonce
+  "some_nonce"
+end
+
 describe PhraseApp::InContextEditor::ViewHelpers do
   before(:all) do
     class Helpers
@@ -20,7 +24,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
       before(:each) { PhraseApp::InContextEditor.config.enabled = true }
 
       describe "has right ICE bundle address" do
-        it { is_expected.to include("<script>") }
+        it { is_expected.to include("<script nonce='some_nonce'>") }
         it { is_expected.to include("https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js") }
         it { is_expected.to include("</script>") }
       end
