@@ -1,4 +1,5 @@
 require "rspec"
+require "logger"
 require "rails/engine"
 require "rails/generators"
 
