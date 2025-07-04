@@ -4,6 +4,7 @@ PATH
     phraseapp-in-context-editor-ruby (3.1.0)
       i18n (~> 1.0)
       json (~> 2.0)
+      rack (~> 2.2.14)
       request_store (~> 1.2)
 
 GEM
