@@ -4,7 +4,19 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "bundler"
+    directory: "/examples"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/examples"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
