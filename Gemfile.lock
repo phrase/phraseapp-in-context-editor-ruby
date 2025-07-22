@@ -97,7 +97,7 @@ GEM
     async-pool (0.4.0)
       async (>= 1.25)
     builder (3.2.4)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.3.5)
     console (1.23.2)
       fiber-annotation
       fiber-local
@@ -124,7 +124,7 @@ GEM
       rake (>= 10.0)
     globalid (1.2.0)
       activesupport (>= 6.1)
-    i18n (1.14.1)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-event (1.3.2)
     json (2.6.3)
