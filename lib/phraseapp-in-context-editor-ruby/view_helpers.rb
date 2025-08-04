@@ -28,7 +28,7 @@ module PhraseApp
             let phraseapp = document.createElement('script');
             phraseapp.type = 'module';
             phraseapp.async = true;
-            phraseapp.src = "https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js";
+            phraseapp.src = "https://cdn.phrase.com/strings/plugins/editor/latest/ice/index.js";
             let script = document.getElementsByTagName('script')[0];
             script.parentNode.insertBefore(phraseapp, script);
           })();

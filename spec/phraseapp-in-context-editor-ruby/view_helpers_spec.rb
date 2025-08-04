@@ -25,7 +25,7 @@ describe PhraseApp::InContextEditor::ViewHelpers do
 
       describe "has right ICE bundle address" do
         it { is_expected.to include("<script nonce='some_nonce'>") }
-        it { is_expected.to include("https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js") }
+        it { is_expected.to include("https://cdn.phrase.com/strings/plugins/editor/latest/ice/index.js") }
         it { is_expected.to include("</script>") }
       end
 
