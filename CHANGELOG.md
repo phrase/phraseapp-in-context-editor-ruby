@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.2.0...v3.2.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* **SCM-615:** update cdn url ([#123](https://github.com/phrase/phraseapp-in-context-editor-ruby/issues/123)) ([2b1b873](https://github.com/phrase/phraseapp-in-context-editor-ruby/commit/2b1b8735b2a18f314e3cc6e41a06336403697894))
+
 # [3.2.0](https://github.com/phrase/phraseapp-in-context-editor-ruby/compare/v3.1.1...v3.2.0) (2024-07-11)
 
 
