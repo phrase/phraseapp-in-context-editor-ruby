@@ -25,6 +25,6 @@ Gem::Specification.new do |s|
   s.add_dependency("i18n", "~> 1.0")
   s.add_dependency("request_store", "~> 1.2")
   s.add_development_dependency("rspec", "~> 3.0")
-  s.add_development_dependency("rails", "~> 7.0")
+  s.add_development_dependency("rails", "~> 8.0.5", ">= 8.0.5.2")
   s.add_development_dependency("github_changelog_generator", "~> 1.16")
 end
